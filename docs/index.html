@@ -47,15 +47,21 @@
       
       .feature-card {
         background: white;
-        border-radius: 1rem;
-        padding: 2rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
       }
       
+      @media (min-width: 768px) {
+        .feature-card {
+          padding: 1.5rem;
+        }
+      }
+      
       .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 107, 53, 0.2);
       }
     </style>
 </head>
@@ -83,91 +89,91 @@
         </div>
     </header>
     
-    <!-- Hero Section -->
-    <section class="gradient-orange-soft py-20 text-center">
+    <!-- Hero Section - 70% 축소 -->
+    <section class="gradient-orange-soft py-10 md:py-14 text-center">
         <div class="container mx-auto px-4">
-            <div class="loading-pulse mb-6">
-                <i class="fas fa-spinner fa-spin text-6xl text-orange-600"></i>
+            <div class="loading-pulse mb-4">
+                <i class="fas fa-spinner fa-spin text-3xl md:text-5xl text-orange-600"></i>
             </div>
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">프로젝트 로딩 중...</h2>
-            <p class="text-xl text-gray-700 mb-8 font-bold">전라도의 모든 맛과 여행을 한 곳에.</p>
-            <p class="text-lg text-gray-600">맛집·축제·촬영지·숙박·농협까지, 전라도 생활지도의 새로운 기준</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">프로젝트 로딩 중...</h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-4 font-bold">전라도의 모든 맛과 여행을 한 곳에.</p>
+            <p class="text-sm md:text-base text-gray-600">맛집·축제·촬영지·숙박·농협까지, 전라도 생활지도의 새로운 기준</p>
         </div>
     </section>
     
-    <!-- Features Preview -->
-    <section class="py-16">
+    <!-- Features Preview - 70% 축소 -->
+    <section class="py-8 md:py-12">
         <div class="container mx-auto px-4">
-            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">
+            <h3 class="text-xl md:text-2xl font-bold text-center text-gray-800 mb-6 md:mb-8">
                 <i class="fas fa-star text-orange-500 mr-2"></i>
                 주요 기능
             </h3>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <!-- Feature 1 -->
-                <div class="feature-card text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-utensils text-5xl text-orange-500"></i>
+                <div class="feature-card text-center py-4 md:py-6">
+                    <div class="mb-3">
+                        <i class="fas fa-utensils text-3xl md:text-4xl text-orange-500"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-2">200+ 전라도 맛집</h4>
-                    <p class="text-gray-600">오신의 사랑한 맛을 찾고 시군구별 정렬하세요</p>
+                    <h4 class="text-base md:text-lg font-bold text-gray-800 mb-2">200+ 전라도 맛집</h4>
+                    <p class="text-sm md:text-base text-gray-600">오신의 사랑한 맛을 찾고 시군구별 정렬하세요</p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="feature-card text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-calendar-alt text-5xl text-orange-500"></i>
+                <div class="feature-card text-center py-4 md:py-6">
+                    <div class="mb-3">
+                        <i class="fas fa-calendar-alt text-3xl md:text-4xl text-orange-500"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-2">30+ 지역 축제</h4>
-                    <p class="text-gray-600">연중의 특별한 축제를 경험하세요</p>
+                    <h4 class="text-base md:text-lg font-bold text-gray-800 mb-2">30+ 지역 축제</h4>
+                    <p class="text-sm md:text-base text-gray-600">연중의 특별한 축제를 경험하세요</p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="feature-card text-center">
-                    <div class="mb-4">
-                        <i class="fas fa-film text-5xl text-orange-500"></i>
+                <div class="feature-card text-center py-4 md:py-6">
+                    <div class="mb-3">
+                        <i class="fas fa-film text-3xl md:text-4xl text-orange-500"></i>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-800 mb-2">50+ 한류 촬영지</h4>
-                    <p class="text-gray-600">드라마와 영화의 배경을 직접 방문하세요</p>
+                    <h4 class="text-base md:text-lg font-bold text-gray-800 mb-2">50+ 한류 촬영지</h4>
+                    <p class="text-sm md:text-base text-gray-600">드라마와 영화의 배경을 직접 방문하세요</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Stats Section -->
-    <section class="gradient-orange text-white py-16">
+    <!-- Stats Section - 70% 축소 -->
+    <section class="gradient-orange text-white py-8 md:py-12">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
                 <div>
-                    <i class="fas fa-map-marked-alt text-4xl mb-3"></i>
-                    <p class="text-4xl font-bold">200+</p>
-                    <p class="text-lg opacity-90">전라도 맛집</p>
+                    <i class="fas fa-map-marked-alt text-2xl md:text-3xl mb-2"></i>
+                    <p class="text-2xl md:text-3xl font-bold">200+</p>
+                    <p class="text-sm md:text-base opacity-90">전라도 맛집</p>
                 </div>
                 <div>
-                    <i class="fas fa-calendar-star text-4xl mb-3"></i>
-                    <p class="text-4xl font-bold">30+</p>
-                    <p class="text-lg opacity-90">지역 축제</p>
+                    <i class="fas fa-calendar-star text-2xl md:text-3xl mb-2"></i>
+                    <p class="text-2xl md:text-3xl font-bold">30+</p>
+                    <p class="text-sm md:text-base opacity-90">지역 축제</p>
                 </div>
                 <div>
-                    <i class="fas fa-film text-4xl mb-3"></i>
-                    <p class="text-4xl font-bold">50+</p>
-                    <p class="text-lg opacity-90">한류 촬영지</p>
+                    <i class="fas fa-film text-2xl md:text-3xl mb-2"></i>
+                    <p class="text-2xl md:text-3xl font-bold">50+</p>
+                    <p class="text-sm md:text-base opacity-90">한류 촬영지</p>
                 </div>
                 <div>
-                    <i class="fas fa-hotel text-4xl mb-3"></i>
-                    <p class="text-4xl font-bold">100+</p>
-                    <p class="text-lg opacity-90">숙박업소</p>
+                    <i class="fas fa-hotel text-2xl md:text-3xl mb-2"></i>
+                    <p class="text-2xl md:text-3xl font-bold">100+</p>
+                    <p class="text-sm md:text-base opacity-90">숙박업소</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- CTA Section -->
-    <section class="py-16 bg-white">
+    <!-- CTA Section - 70% 축소 -->
+    <section class="py-8 md:py-12 bg-white">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-bold text-gray-800 mb-4">배달 수수료 0원!</h3>
-            <p class="text-xl text-gray-600 mb-8">사장님 부담 없는 배달, 지금 무료로 입점하세요</p>
-            <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-bold transition-all shadow-xl">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">배달 수수료 0원!</h3>
+            <p class="text-base md:text-lg text-gray-600 mb-4 md:mb-6">사장님 부담 없는 배달, 지금 무료로 입점하세요</p>
+            <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-bold transition-all shadow-xl">
                 <i class="fas fa-store mr-2"></i>
                 가맹점 신청하기
             </button>
