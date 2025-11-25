@@ -3,6 +3,7 @@ import { serveStatic } from 'hono/cloudflare-workers'
 import restaurants from './routes/restaurants'
 import regions from './routes/regions'
 import categories from './routes/categories'
+import orders from './routes/orders'
 
 type Bindings = {
   DB: D1Database;
@@ -17,6 +18,7 @@ app.use('/static/*', serveStatic({ root: './public' }))
 app.route('/api/restaurants', restaurants)
 app.route('/api/regions', regions)
 app.route('/api/categories', categories)
+app.route('/api/orders', orders)
 
 // 맛집 목록 페이지
 app.get('/restaurants', async (c) => {
