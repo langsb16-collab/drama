@@ -6,7 +6,7 @@ type Bindings = {
 
 const app = new Hono<{ Bindings: Bindings }>()
 
-// GET /api/categories - 모든 카테고리 목록
+// GET /api/categories - 카테고리 목록
 app.get('/', async (c) => {
   const { DB } = c.env
 
