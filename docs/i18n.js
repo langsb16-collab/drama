@@ -61,6 +61,19 @@ const translations = {
     // Marketplace Page
     marketplaceTitle: '사고팔고',
     marketplaceDescription: '우리 동네 중고거래 플랫폼',
+    
+    // Auth
+    login: '로그인',
+    register: '회원가입',
+    logout: '로그아웃',
+    email: '이메일',
+    password: '비밀번호',
+    name: '이름',
+    loginDescription: '전라도 로컬 미식 슈퍼로드에 오신 것을 환영합니다',
+    registerDescription: '새로운 계정을 만들어보세요',
+    noAccount: '계정이 없으신가요?',
+    hasAccount: '이미 계정이 있으신가요?',
+    adminHint: '관리자 테스트:',
   },
   
   en: {
@@ -124,6 +137,19 @@ const translations = {
     // Marketplace Page
     marketplaceTitle: 'Marketplace',
     marketplaceDescription: 'Local Second-hand Trading Platform',
+    
+    // Auth
+    login: 'Login',
+    register: 'Sign Up',
+    logout: 'Logout',
+    email: 'Email',
+    password: 'Password',
+    name: 'Name',
+    loginDescription: 'Welcome to Jeonlado Local Food Superroad',
+    registerDescription: 'Create your new account',
+    noAccount: "Don't have an account?",
+    hasAccount: 'Already have an account?',
+    adminHint: 'Admin Test:',
   },
   
   zh: {
@@ -187,6 +213,19 @@ const translations = {
     // Marketplace Page
     marketplaceTitle: '二手交易',
     marketplaceDescription: '本地二手交易平台',
+    
+    // Auth
+    login: '登录',
+    register: '注册',
+    logout: '退出登录',
+    email: '电子邮箱',
+    password: '密码',
+    name: '姓名',
+    loginDescription: '欢迎来到全罗道本地美食超级公路',
+    registerDescription: '创建您的新账户',
+    noAccount: '还没有账户？',
+    hasAccount: '已有账户？',
+    adminHint: '管理员测试：',
   },
   
   ja: {
@@ -250,6 +289,19 @@ const translations = {
     // Marketplace Page
     marketplaceTitle: '中古取引',
     marketplaceDescription: '地域中古取引プラットフォーム',
+    
+    // Auth
+    login: 'ログイン',
+    register: '新規登録',
+    logout: 'ログアウト',
+    email: 'メールアドレス',
+    password: 'パスワード',
+    name: '名前',
+    loginDescription: '全羅道ローカルグルメスーパーロードへようこそ',
+    registerDescription: '新しいアカウントを作成',
+    noAccount: 'アカウントをお持ちでないですか？',
+    hasAccount: 'すでにアカウントをお持ちですか？',
+    adminHint: '管理者テスト：',
   }
 };
 
