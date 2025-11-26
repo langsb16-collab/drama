@@ -6,13 +6,14 @@ const translations = {
     siteSubtitle: 'Jeonlado Local Food Superroad',
     
     // Hero Section
-    heroTitle: '전라도의 모든 맛과 여행을 한 곳에',
-    heroDescription: '맛집·축제·촬영지·여행사·농협까지, 전라도 생활지도의 새로운 기준',
+    heroTitle: '전라도의 맛과 여행을 한 곳에',
+    heroDescription: '지역 맛집·축제·촬영지·여행사·근처 농협, 지역민 중고거래, 무료 배달앱 전라도 생활지도의 새로운 기준',
     
     // Navigation Tabs
-    tabRestaurants: '맛집',
+    tabRestaurants: '맛집, 무료배달',
     tabTravel: '여행사',
     tabFestivals: '축제',
+    tabMarketplace: '사고팔고',
     tabCommunity: '우리동네 살리기',
     
     // Community Sub-menus
@@ -82,13 +83,14 @@ const translations = {
     siteSubtitle: 'Discover Authentic Korean Cuisine & Culture',
     
     // Hero Section
-    heroTitle: 'All Tastes and Travels of Jeonlado in One Place',
-    heroDescription: 'Restaurants, Festivals, Filming Locations, Travel Agencies, and More',
+    heroTitle: 'Taste and Travel of Jeonlado in One Place',
+    heroDescription: 'Local restaurants, festivals, filming locations, travel agencies, nearby agricultural cooperatives, local marketplace, free delivery app - A new standard for Jeonlado living map',
     
     // Navigation Tabs
-    tabRestaurants: 'Restaurants',
+    tabRestaurants: 'Restaurants, Free Delivery',
     tabTravel: 'Travel',
     tabFestivals: 'Festivals',
+    tabMarketplace: 'Marketplace',
     tabCommunity: 'Community Support',
     
     // Community Sub-menus
@@ -158,13 +160,14 @@ const translations = {
     siteSubtitle: '探索韩国地道美食与文化',
     
     // Hero Section
-    heroTitle: '全罗道的所有美食与旅行集于一处',
-    heroDescription: '餐厅、节日、拍摄地、旅行社等',
+    heroTitle: '全罗道的美食与旅行集于一处',
+    heroDescription: '当地餐厅、节日、拍摄地、旅行社、附近农协、当地二手交易、免费配送应用 - 全罗道生活地图的新标准',
     
     // Navigation Tabs
-    tabRestaurants: '餐厅',
+    tabRestaurants: '餐厅, 免费配送',
     tabTravel: '旅行社',
     tabFestivals: '节日',
+    tabMarketplace: '二手交易',
     tabCommunity: '社区支持',
     
     // Community Sub-menus
@@ -234,13 +237,14 @@ const translations = {
     siteSubtitle: '本場の韓国料理と文化を発見',
     
     // Hero Section
-    heroTitle: '全羅道のすべての味と旅を一か所で',
-    heroDescription: 'レストラン、祭り、撮影地、旅行会社など',
+    heroTitle: '全羅道の味と旅を一か所で',
+    heroDescription: '地域レストラン、祭り、撮影地、旅行会社、近くの農協、地域住民中古取引、無料配送アプリ - 全羅道生活地図の新しい基準',
     
     // Navigation Tabs
-    tabRestaurants: 'レストラン',
+    tabRestaurants: 'レストラン, 無料配送',
     tabTravel: '旅行会社',
     tabFestivals: '祭り',
+    tabMarketplace: '中古取引',
     tabCommunity: 'コミュニティ支援',
     
     // Community Sub-menus

@@ -25,13 +25,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   await loadStats();
 });
 
-// Show Section (맛집, 여행사, 축제, 우리동네 살리기)
+// Show Section (맛집, 여행사, 축제, 사고팔고, 우리동네 살리기)
 function showSection(sectionName) {
   currentSection = sectionName;
   
   // Hide all sections
   document.getElementById('restaurants').style.display = 'none';
   document.getElementById('travel').style.display = 'none';
+  document.getElementById('marketplace').style.display = 'none';
   document.getElementById('community').style.display = 'none';
   
   // Show selected section
