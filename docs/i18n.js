@@ -318,16 +318,30 @@ function changeLanguage(lang) {
   localStorage.setItem('language', lang);
   updatePageLanguage();
   
-  // 버튼 활성화 상태 업데이트
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.remove('bg-orange-500', 'text-white');
-    btn.classList.add('bg-gray-200', 'text-gray-700');
-  });
+  // 버튼 활성화 상태 업데이트 - 각 언어별 고유 색상
+  const btnKo = document.querySelector('[data-lang="ko"]');
+  const btnEn = document.querySelector('[data-lang="en"]');
+  const btnZh = document.querySelector('[data-lang="zh"]');
+  const btnJa = document.querySelector('[data-lang="ja"]');
   
+  // Reset all buttons to inactive state (opacity reduced)
+  if (btnKo) btnKo.className = 'lang-btn px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block opacity-50';
+  if (btnEn) btnEn.className = 'lang-btn px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block opacity-50';
+  if (btnZh) btnZh.className = 'lang-btn px-3 py-1 rounded-full bg-red-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block opacity-50';
+  if (btnJa) btnJa.className = 'lang-btn px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block opacity-50';
+  
+  // Set active button (full opacity)
   const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
   if (activeBtn) {
-    activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
-    activeBtn.classList.add('bg-orange-500', 'text-white');
+    if (lang === 'ko') {
+      activeBtn.className = 'lang-btn px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block';
+    } else if (lang === 'en') {
+      activeBtn.className = 'lang-btn px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block';
+    } else if (lang === 'zh') {
+      activeBtn.className = 'lang-btn px-3 py-1 rounded-full bg-red-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block';
+    } else if (lang === 'ja') {
+      activeBtn.className = 'lang-btn px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block';
+    }
   }
 }
 
@@ -348,10 +362,7 @@ function updatePageLanguage() {
 document.addEventListener('DOMContentLoaded', () => {
   updatePageLanguage();
   
-  // 활성 언어 버튼 표시
-  const activeBtn = document.querySelector(`[data-lang="${currentLanguage}"]`);
-  if (activeBtn) {
-    activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
-    activeBtn.classList.add('bg-orange-500', 'text-white');
+  // 활성 언어 버튼 표시 - 초기 로드 시에도 각 언어별 색상 적용
+  changeLanguage(currentLanguage);
   }
 });

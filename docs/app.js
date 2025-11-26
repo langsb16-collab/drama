@@ -126,13 +126,24 @@ function filterRestaurants(filter) {
   currentFilter = filter;
   currentPage = 1;
   
-  // Update button states
-  document.querySelectorAll('[id^="btn-"]').forEach(btn => {
-    btn.classList.remove('bg-orange-500', 'text-white');
-    btn.classList.add('bg-gray-200', 'text-gray-700');
-  });
-  document.getElementById(`btn-${filter}`).classList.remove('bg-gray-200', 'text-gray-700');
-  document.getElementById(`btn-${filter}`).classList.add('bg-orange-500', 'text-white');
+  // Update button states - 각 버튼마다 고유한 색상 적용
+  const btnAll = document.getElementById('btn-all');
+  const btnJeonnam = document.getElementById('btn-jeonnam');
+  const btnJeonbuk = document.getElementById('btn-jeonbuk');
+  
+  // Reset all buttons to inactive state
+  btnAll.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition opacity-60';
+  btnJeonnam.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition opacity-60';
+  btnJeonbuk.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition opacity-60';
+  
+  // Set active button
+  if (filter === 'all') {
+    btnAll.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition';
+  } else if (filter === 'jeonnam') {
+    btnJeonnam.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition';
+  } else if (filter === 'jeonbuk') {
+    btnJeonbuk.className = 'px-6 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition';
+  }
   
   // Filter data
   if (filter === 'all') {

@@ -80,16 +80,16 @@
                 </div>
                 <div class="flex items-center space-x-2">
                     <!-- Language Buttons -->
-                    <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold transition hidden md:block">
+                    <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block">
                         🇰🇷 한국어
                     </button>
-                    <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-semibold transition hover:bg-orange-100 hidden md:block">
+                    <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block">
                         🇺🇸 English
                     </button>
-                    <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-semibold transition hover:bg-orange-100 hidden md:block">
+                    <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-3 py-1 rounded-full bg-red-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block">
                         🇨🇳 中文
                     </button>
-                    <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-semibold transition hover:bg-orange-100 hidden md:block">
+                    <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg hidden md:block">
                         🇯🇵 日本語
                     </button>
                     
@@ -171,13 +171,13 @@
         <div class="container mx-auto px-4">
             <!-- Filter Buttons -->
             <div class="flex justify-center space-x-4 mb-8 flex-wrap">
-                <button onclick="filterRestaurants('all')" id="btn-all" class="px-6 py-2 rounded-full bg-orange-500 text-white font-semibold mb-2">
+                <button onclick="filterRestaurants('all')" id="btn-all" class="px-6 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold mb-2 shadow-md hover:shadow-lg transition">
                     전체
                 </button>
-                <button onclick="filterRestaurants('jeonnam')" id="btn-jeonnam" class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2">
+                <button onclick="filterRestaurants('jeonnam')" id="btn-jeonnam" class="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold hover:from-blue-600 hover:to-blue-700 mb-2 shadow-md hover:shadow-lg transition">
                     전라남도
                 </button>
-                <button onclick="filterRestaurants('jeonbuk')" id="btn-jeonbuk" class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2">
+                <button onclick="filterRestaurants('jeonbuk')" id="btn-jeonbuk" class="px-6 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 mb-2 shadow-md hover:shadow-lg transition">
                     전라북도
                 </button>
             </div>
