@@ -19,17 +19,17 @@ const chatbotQA = {
   en: [
     { q: 'What is JT365?', a: 'JT365 is a platform that brings together information about Jeolla local cuisine, travel, community, and marketplace services. It provides restaurant guides, festivals, travel, lodging, secondhand trading, and local policy information.' },
     { q: 'What kind of information does it offer?', a: 'You can find restaurant information, local festivals, accommodations, travel agencies, regional tourist attractions, secondhand marketplace listings, and community policy/benefit information.' },
-    { q: 'How does the secondhand marketplace work?', a: 'You can buy and sell locally through the "Buy & Sell" section. It includes escrow payment, QR-based face-to-face trade verification, GPS neighborhood authentication, 1:1 chat, and a review system.' },
-    { q: 'How does the escrow payment system work?', a: 'When the buyer makes a payment, the amount is held in escrow first. After the purchase is confirmed, the money is transferred to the seller. If the item isn\'t received or a problem occurs, a refund is possible.' },
-    { q: 'How do I verify a face-to-face transaction?', a: 'A QR code generated per product can be scanned by the buyer to verify a successful direct transaction. It works entirely on mobile—no seller terminal device required.' },
+    { q: 'How does the secondhand marketplace work? Where do I use it?', a: 'You can buy and sell locally through the "Buy & Sell" section.\nIt includes escrow payment, QR-based face-to-face trade verification, GPS neighborhood authentication, 1:1 chat, and a review system.' },
+    { q: 'How does the escrow payment system work?', a: 'When the buyer makes a payment, the amount is held in escrow first.\nAfter the purchase is confirmed, the money is transferred to the seller.\nIf the item isn\'t received or a problem occurs, a refund is possible.' },
+    { q: 'How do I verify a face-to-face (direct) transaction?', a: 'A QR code generated per product can be scanned by the buyer to verify a successful direct transaction. It works entirely on mobile—no seller terminal device required.' },
     { q: 'What product categories are available?', a: 'We support various categories: home appliances, furniture/interior, pet supplies, farm produce/local direct trade, tools/DIY, clothing/accessories, books/education, and more.' },
     { q: 'How do I sign up or log in?', a: 'Click the "Sign Up" or "Log In" button at the top of the website to create an account or log in using your email and password.' },
     { q: 'Where can I find restaurant or travel information?', a: 'Select "Restaurants", "Festivals", "Lodging", or "Travel Agencies" from the main menu to browse local restaurant lists, accommodations, and custom travel agency recommendations.' },
     { q: 'What can I do as a member?', a: 'After signing up, you can participate in secondhand trading, leave reviews, save favorite regions or stores, contact travel agencies, and view community posts.' },
-    { q: 'Do you provide local policy information?', a: 'Yes — the "Local Benefits" section offers information on vacant house rental/remodeling programs, local creator support, workation programs, and regional revitalization initiatives.' },
+    { q: 'Do you also provide local policy or support program information?', a: 'Yes — the "Local Benefits" section offers information on vacant house rental/remodeling programs, local creator support, workation programs, and regional revitalization initiatives.' },
     { q: 'Which regions are covered?', a: 'The main focus is Jeollanam-do and Jeollabuk-do (the Jeolla region), but some travel agency information includes nationwide areas such as Seoul, Busan, Jeju, and Gangwon.' },
-    { q: 'How do I apply for a travel agency listing?', a: 'You can apply through the "Partner Inquiry" page on the website or by submitting the inquiry form in the travel agency section.' },
-    { q: 'Is there a review or rating system?', a: 'Yes — only users who have completed a transaction can leave a review. Automatic reminders are also sent to encourage review submission.' },
+    { q: 'How do I apply for a travel agency listing or franchise partnership?', a: 'You can apply through the "Partner Inquiry" page on the website or by submitting the inquiry form in the travel agency section.' },
+    { q: 'Is there a review or rating system between members?', a: 'Yes — only users who have completed a transaction can leave a review.\nAutomatic reminders are also sent to encourage review submission.' },
     { q: 'What is the goal of the platform?', a: 'The goal is to integrate local food and travel information, connect residents, small businesses, travel agencies, and communities, and ultimately help revitalize the local region.' }
   ],
   zh: [
@@ -274,7 +274,7 @@ function updateChatbotBubble() {
   
   const bubbleTexts = {
     ko: '궁금하신<br>질문은<br>자동응답봇에<br>문의하세요',
-    en: 'Have<br>questions?<br>Ask our<br>chatbot',
+    en: 'If you have<br>any questions,<br>please contact<br>our Auto-Response Bot',
     zh: '有疑问吗？<br>请询问<br>聊天<br>机器人',
     ja: '質問が<br>ありますか？<br>チャット<br>ボットに'
   };
