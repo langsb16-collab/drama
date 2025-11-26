@@ -275,7 +275,7 @@ function updateChatbotBubble() {
   const bubbleTexts = {
     ko: '궁금하신<br>질문은<br>자동응답봇에<br>문의하세요',
     en: 'If you have<br>any questions,<br>please contact<br>our Auto-Response Bot',
-    zh: '有疑问吗？<br>请询问<br>聊天<br>机器人',
+    zh: '如有疑问，<br>请咨询<br>自动回复<br>机器人',
     ja: '質問が<br>ありますか？<br>チャット<br>ボットに'
   };
   
@@ -303,8 +303,11 @@ if (typeof window !== 'undefined') {
       originalChangeLanguage(lang);
     }
     
-    // Update chatbot
-    updateChatbotBubble();
+    // Update chatbot after language change
+    setTimeout(() => {
+      console.log('🔄 Updating chatbot bubble for lang:', window.currentLanguage);
+      updateChatbotBubble();
+    }, 100);
   };
   
   // Initialize on page load

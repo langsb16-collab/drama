@@ -544,10 +544,12 @@ const translations = {
 
 // 현재 언어 설정 (기본값: 한국어)
 let currentLanguage = localStorage.getItem('language') || 'ko';
+window.currentLanguage = currentLanguage; // Make it globally accessible
 
 // 언어 변경 함수
 function changeLanguage(lang) {
   currentLanguage = lang;
+  window.currentLanguage = lang; // Update global variable
   localStorage.setItem('language', lang);
   updatePageLanguage();
   
