@@ -37,37 +37,35 @@ console.log('🎉 Fetching festivals...');
 const festivals = queryD1('SELECT * FROM festivals');
 console.log(`   Found ${festivals.length} festivals`);
 
-// Export menus
-console.log('🍜 Fetching menus...');
-const menus = queryD1('SELECT * FROM menus');
-console.log(`   Found ${menus.length} menus`);
-
 // Export travel agencies
 console.log('✈️  Fetching travel agencies...');
 const travelAgencies = queryD1('SELECT * FROM travel_agencies');
 console.log(`   Found ${travelAgencies.length} travel agencies`);
 
-// Group menus by restaurant
-const menusByRestaurant = {};
-menus.forEach(menu => {
-  if (!menusByRestaurant[menu.restaurant_id]) {
-    menusByRestaurant[menu.restaurant_id] = [];
-  }
-  menusByRestaurant[menu.restaurant_id].push(menu);
-});
+// Export menus
+console.log('🍽️  Fetching menus...');
+const menusData = queryD1('SELECT * FROM menus');
+console.log(`   Found ${menusData.length} menus`);
 
-// Add menus to restaurants
-const restaurantsWithMenus = restaurants.map(r => ({
-  ...r,
-  menus: menusByRestaurant[r.id] || []
-}));
+// Export menu option groups
+console.log('⚙️  Fetching menu option groups...');
+const optionGroups = queryD1('SELECT * FROM menu_option_groups');
+console.log(`   Found ${optionGroups.length} option groups`);
+
+// Export menu option items
+console.log('📋 Fetching menu option items...');
+const optionItems = queryD1('SELECT * FROM menu_option_items');
+console.log(`   Found ${optionItems.length} option items`);
+
+// Build menu data with options (done in later section)
+// Skip this for now as we'll process menusData with options below
 
 // Save main data files
 console.log('\n💾 Saving JSON files...');
 
 fs.writeFileSync(
   'docs/data/restaurants.json',
-  JSON.stringify({ restaurants: restaurantsWithMenus, total: restaurantsWithMenus.length }, null, 2)
+  JSON.stringify({ restaurants, total: restaurants.length }, null, 2)
 );
 console.log('   ✅ docs/data/restaurants.json');
 
@@ -83,9 +81,43 @@ fs.writeFileSync(
 );
 console.log('   ✅ docs/data/travel-agencies.json');
 
+// Build menu data with options
+const menusWithOptions = menusData.map(menu => {
+  const groups = optionGroups.filter(g => g.menu_id === menu.id).map(group => ({
+    ...group,
+    items: optionItems.filter(item => item.option_group_id === group.id)
+  }));
+  
+  return {
+    ...menu,
+    optionGroups: groups
+  };
+});
+
+// Group menus by restaurant
+const menusByRestaurant = {};
+menusWithOptions.forEach(menu => {
+  if (!menusByRestaurant[menu.restaurant_id]) {
+    menusByRestaurant[menu.restaurant_id] = [];
+  }
+  menusByRestaurant[menu.restaurant_id].push(menu);
+});
+
+fs.writeFileSync(
+  'docs/data/menus.json',
+  JSON.stringify({ menus: menusWithOptions, total: menusWithOptions.length }, null, 2)
+);
+console.log(`   ✅ docs/data/menus.json (${menusWithOptions.length} menus)`);
+
+fs.writeFileSync(
+  'docs/data/menus-by-restaurant.json',
+  JSON.stringify(menusByRestaurant, null, 2)
+);
+console.log('   ✅ docs/data/menus-by-restaurant.json');
+
 // Create region indexes
-const jeonnam = restaurantsWithMenus.filter(r => r.region === '전라남도');
-const jeonbuk = restaurantsWithMenus.filter(r => r.region === '전라북도');
+const jeonnam = restaurants.filter(r => r.region_id === 1);
+const jeonbuk = restaurants.filter(r => r.region_id === 2);
 
 fs.writeFileSync(
   'docs/data/restaurants-jeonnam.json',
@@ -103,7 +135,7 @@ console.log(`   ✅ docs/data/restaurants-jeonbuk.json (${jeonbuk.length} items)
 const stats = {
   total_restaurants: restaurants.length,
   total_festivals: festivals.length,
-  total_menus: menus.length,
+  total_menus: menusData.length,
   jeonnam_restaurants: jeonnam.length,
   jeonbuk_restaurants: jeonbuk.length,
   categories: {},
@@ -125,6 +157,6 @@ console.log('\n🎉 Export completed successfully!');
 console.log(`\n📊 Summary:`);
 console.log(`   Restaurants: ${restaurants.length}`);
 console.log(`   Festivals: ${festivals.length}`);
-console.log(`   Menus: ${menus.length}`);
+console.log(`   Menus: ${menusData.length}`);
 console.log(`   Jeonnam: ${jeonnam.length}`);
 console.log(`   Jeonbuk: ${jeonbuk.length}`);

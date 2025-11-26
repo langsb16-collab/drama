@@ -15,12 +15,69 @@ const AGENCIES_PER_PAGE = 12;
 // Current Section
 let currentSection = 'restaurants';
 
+// Community State
+let currentCommunityTab = 'benefits';
+
 // Load data on page load
 window.addEventListener('DOMContentLoaded', async () => {
   await loadRestaurants();
   await loadAgencies();
   await loadStats();
 });
+
+// Show Section (맛집, 여행사, 축제, 우리동네 살리기)
+function showSection(sectionName) {
+  currentSection = sectionName;
+  
+  // Hide all sections
+  document.getElementById('restaurants').style.display = 'none';
+  document.getElementById('travel').style.display = 'none';
+  document.getElementById('community').style.display = 'none';
+  
+  // Show selected section
+  document.getElementById(sectionName).style.display = 'block';
+  
+  // Update tab button states
+  document.querySelectorAll('[id^="tab-"]').forEach(btn => {
+    btn.classList.remove('bg-white', 'text-orange-500', 'font-bold', 'shadow-lg', 'border-2', 'border-orange-500');
+    btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
+  });
+  
+  const activeTab = document.getElementById(`tab-${sectionName}`);
+  if (activeTab) {
+    activeTab.classList.remove('text-gray-700', 'font-semibold');
+    activeTab.classList.add('text-orange-500', 'font-bold', 'shadow-lg', 'border-2', 'border-orange-500');
+  }
+  
+  // Load data if needed
+  if (sectionName === 'travel' && allAgencies.length === 0) {
+    loadAgencies();
+  }
+}
+
+// Show Community Tab (우리동네 혜택, 사고팔고)
+function showCommunityTab(tabName) {
+  currentCommunityTab = tabName;
+  
+  // Hide all community content
+  document.getElementById('community-benefits').style.display = 'none';
+  document.getElementById('community-marketplace').style.display = 'none';
+  
+  // Show selected tab
+  document.getElementById(`community-${tabName}`).style.display = 'block';
+  
+  // Update button states
+  document.querySelectorAll('[id^="community-tab-"]').forEach(btn => {
+    btn.classList.remove('bg-orange-500', 'text-white');
+    btn.classList.add('bg-gray-200', 'text-gray-700');
+  });
+  
+  const activeTab = document.getElementById(`community-tab-${tabName}`);
+  if (activeTab) {
+    activeTab.classList.remove('bg-gray-200', 'text-gray-700');
+    activeTab.classList.add('bg-orange-500', 'text-white');
+  }
+}
 
 // Load restaurants data
 async function loadRestaurants() {
