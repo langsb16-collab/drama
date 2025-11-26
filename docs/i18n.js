@@ -42,6 +42,29 @@ const translations = {
     // Festivals Section
     festivalTitle: '전라도 지역 축제',
     festivalDesc: '전라도 지역의 다채로운 축제와 문화 행사 정보',
+    festivalMainTitle: '전라도 주요 축제',
+    festivalNationalTitle: '전국 주요 축제 (문화관광축제 선정)',
+    festivalSeoulTitle: '서울·수도권 축제',
+    festivalOtherTitle: '기타 지역 축제',
+    festivalNotice: '축제 정보는 2024년 기준입니다. 최신 일정과 참가 방법은 각 지자체 및 축제 공식 홈페이지를 확인해주세요.',
+    
+    // Festival Categories
+    festCatFilm: '국제영화제',
+    festCatWater: '물/해양',
+    festCatPort: '항구/해양',
+    festCatMusic: '전통음악',
+    festCatCulture: '문화체험',
+    festCatFood: '음식축제',
+    festCatFolk: '전통민속',
+    festCatHistory: '역사문화',
+    festCatWinter: '겨울체험',
+    festCatCraft: '공예/전통',
+    festCatPerform: '전통공연',
+    festCatMusicFest: '음악축제',
+    festCatFireworks: '불꽃/공연',
+    festCatFilmFood: '영화+맛집',
+    festCatHeritage: '문화유산',
+    festCatClassical: '클래식음악',
     
     // CTA Section
     ctaTitle: '배달 수수료 0원!',
@@ -147,6 +170,29 @@ const translations = {
     // Festivals Section
     festivalTitle: 'Jeolla Region Festivals',
     festivalDesc: 'Diverse festivals and cultural events in the Jeolla region',
+    festivalMainTitle: 'Major Jeolla Festivals',
+    festivalNationalTitle: 'Major National Festivals (Cultural Tourism Festivals)',
+    festivalSeoulTitle: 'Seoul & Metropolitan Area Festivals',
+    festivalOtherTitle: 'Other Regional Festivals',
+    festivalNotice: 'Festival information is based on 2024. Please check official websites for latest schedules and participation details.',
+    
+    // Festival Categories
+    festCatFilm: 'Int\'l Film Festival',
+    festCatWater: 'Water/Marine',
+    festCatPort: 'Port/Marine',
+    festCatMusic: 'Traditional Music',
+    festCatCulture: 'Cultural Experience',
+    festCatFood: 'Food Festival',
+    festCatFolk: 'Traditional Folk',
+    festCatHistory: 'Historical Culture',
+    festCatWinter: 'Winter Experience',
+    festCatCraft: 'Craft/Traditional',
+    festCatPerform: 'Traditional Performance',
+    festCatMusicFest: 'Music Festival',
+    festCatFireworks: 'Fireworks/Performance',
+    festCatFilmFood: 'Film+Food',
+    festCatHeritage: 'Cultural Heritage',
+    festCatClassical: 'Classical Music',
     
     // CTA Section
     ctaTitle: 'Zero Delivery Fee!',
@@ -252,6 +298,29 @@ const translations = {
     // Festivals Section
     festivalTitle: '全罗道地区庆典',
     festivalDesc: '全罗道地区丰富多彩的庆典和文化活动信息',
+    festivalMainTitle: '全罗道主要庆典',
+    festivalNationalTitle: '全国主要庆典 (文化旅游庆典)',
+    festivalSeoulTitle: '首尔·首都圈庆典',
+    festivalOtherTitle: '其他地区庆典',
+    festivalNotice: '庆典信息以2024年为准。最新日程和参与方法请查看各地方政府及庆典官方网站。',
+    
+    // Festival Categories
+    festCatFilm: '国际电影节',
+    festCatWater: '水/海洋',
+    festCatPort: '港口/海洋',
+    festCatMusic: '传统音乐',
+    festCatCulture: '文化体验',
+    festCatFood: '美食节',
+    festCatFolk: '传统民俗',
+    festCatHistory: '历史文化',
+    festCatWinter: '冬季体验',
+    festCatCraft: '工艺/传统',
+    festCatPerform: '传统表演',
+    festCatMusicFest: '音乐节',
+    festCatFireworks: '烟火/表演',
+    festCatFilmFood: '电影+美食',
+    festCatHeritage: '文化遗产',
+    festCatClassical: '古典音乐',
     
     // CTA Section
     ctaTitle: '配送费零元！',
@@ -357,6 +426,29 @@ const translations = {
     // Festivals Section
     festivalTitle: '全羅道地域の祭り',
     festivalDesc: '全羅道地域の多彩な祭りと文化イベント情報',
+    festivalMainTitle: '全羅道主要祭り',
+    festivalNationalTitle: '全国主要祭り (文化観光祭り)',
+    festivalSeoulTitle: 'ソウル・首都圏の祭り',
+    festivalOtherTitle: 'その他の地域祭り',
+    festivalNotice: '祭り情報は2024年基準です。最新スケジュールと参加方法は各自治体と祭り公式ホームページをご確認ください。',
+    
+    // Festival Categories
+    festCatFilm: '国際映画祭',
+    festCatWater: '水/海洋',
+    festCatPort: '港/海洋',
+    festCatMusic: '伝統音楽',
+    festCatCulture: '文化体験',
+    festCatFood: '食の祭り',
+    festCatFolk: '伝統民俗',
+    festCatHistory: '歴史文化',
+    festCatWinter: '冬の体験',
+    festCatCraft: '工芸/伝統',
+    festCatPerform: '伝統公演',
+    festCatMusicFest: '音楽祭',
+    festCatFireworks: '花火/公演',
+    festCatFilmFood: '映画+グルメ',
+    festCatHeritage: '文化遺産',
+    festCatClassical: 'クラシック音楽',
     
     // CTA Section
     ctaTitle: '配送料無料！',
