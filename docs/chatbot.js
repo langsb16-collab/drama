@@ -66,10 +66,7 @@ const chatbotQA = {
   ]
 };
 
-// Current language
-let currentLanguage = 'ko';
-
-// Chatbot state
+// Chatbot state (no need to declare currentLanguage - use window.currentLanguage from i18n.js)
 let chatbotOpen = false;
 let currentView = 'list'; // 'list' or 'answer'
 
@@ -142,7 +139,7 @@ function initChatbot() {
 // Show question list
 function showQuestionList() {
   console.log('✅ showQuestionList called');
-  const lang = currentLanguage || 'ko';
+  const lang = window.currentLanguage || 'ko';
   const qa = chatbotQA[lang];
   const container = document.getElementById('chatbot-questions');
   
@@ -183,7 +180,7 @@ function showQuestionList() {
 // Show answer
 function showAnswer(index) {
   console.log('✅ showAnswer called with index:', index);
-  const lang = currentLanguage || 'ko';
+  const lang = window.currentLanguage || 'ko';
   const qa = chatbotQA[lang];
   
   if (!qa || !qa[index]) {
@@ -238,7 +235,7 @@ function sendCustomMessage() {
   if (!message) return;
   
   // Find matching question
-  const lang = currentLanguage || 'ko';
+  const lang = window.currentLanguage || 'ko';
   const qa = chatbotQA[lang];
   let foundIndex = -1;
   
@@ -272,7 +269,7 @@ function sendCustomMessage() {
 
 // Update chatbot bubble text on language change
 function updateChatbotBubble() {
-  const lang = currentLanguage || 'ko';
+  const lang = window.currentLanguage || 'ko';
   const bubbleText = document.getElementById('chatbot-bubble-text');
   
   const bubbleTexts = {
@@ -300,9 +297,8 @@ if (typeof window !== 'undefined') {
   // Override changeLanguage to update chatbot
   window.changeLanguage = function(lang) {
     console.log('🌍 Language changed to:', lang);
-    currentLanguage = lang;
     
-    // Call original function
+    // Call original function (i18n.js will update window.currentLanguage)
     if (originalChangeLanguage && typeof originalChangeLanguage === 'function') {
       originalChangeLanguage(lang);
     }
@@ -314,7 +310,6 @@ if (typeof window !== 'undefined') {
   // Initialize on page load
   window.addEventListener('DOMContentLoaded', () => {
     console.log('✅ Chatbot DOMContentLoaded');
-    currentLanguage = window.currentLanguage || 'ko';
     updateChatbotBubble();
     initChatbot();
   });
@@ -322,7 +317,6 @@ if (typeof window !== 'undefined') {
   // Also try immediate initialization
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     console.log('✅ Chatbot immediate init');
-    currentLanguage = window.currentLanguage || 'ko';
     updateChatbotBubble();
     initChatbot();
   }
