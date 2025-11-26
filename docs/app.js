@@ -38,16 +38,34 @@ function showSection(sectionName) {
   // Show selected section
   document.getElementById(sectionName).style.display = 'block';
   
-  // Update tab button states
-  document.querySelectorAll('[id^="tab-"]').forEach(btn => {
-    btn.classList.remove('bg-white', 'text-orange-500', 'font-bold', 'shadow-lg', 'border-2', 'border-orange-500');
-    btn.classList.add('bg-white', 'text-gray-700', 'font-semibold');
-  });
+  // Update tab button states - 각 버튼마다 고유한 색상
+  const btnRestaurants = document.getElementById('tab-restaurants');
+  const btnMarketplace = document.getElementById('tab-marketplace');
+  const btnTravel = document.getElementById('tab-travel');
+  const btnFestivals = document.getElementById('tab-festivals');
+  const btnCommunity = document.getElementById('tab-community');
   
+  // Reset all buttons to inactive state (opacity reduced)
+  if (btnRestaurants) btnRestaurants.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold shadow-md hover:shadow-lg transition mb-2 text-sm opacity-60';
+  if (btnMarketplace) btnMarketplace.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-purple-500 text-white font-semibold shadow-md hover:shadow-lg transition mb-2 text-sm opacity-60';
+  if (btnTravel) btnTravel.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold shadow-md hover:shadow-lg transition mb-2 text-sm opacity-60';
+  if (btnFestivals) btnFestivals.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white font-semibold shadow-md hover:shadow-lg transition mb-2 text-sm opacity-60';
+  if (btnCommunity) btnCommunity.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-500 text-white font-semibold shadow-md hover:shadow-lg transition mb-2 text-sm opacity-60';
+  
+  // Set active button (full opacity + bold)
   const activeTab = document.getElementById(`tab-${sectionName}`);
   if (activeTab) {
-    activeTab.classList.remove('text-gray-700', 'font-semibold');
-    activeTab.classList.add('text-orange-500', 'font-bold', 'shadow-lg', 'border-2', 'border-orange-500');
+    if (sectionName === 'restaurants') {
+      activeTab.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-2 text-sm';
+    } else if (sectionName === 'marketplace') {
+      activeTab.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-2 text-sm';
+    } else if (sectionName === 'travel') {
+      activeTab.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-2 text-sm';
+    } else if (sectionName === 'festivals') {
+      activeTab.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-2 text-sm';
+    } else if (sectionName === 'community') {
+      activeTab.className = 'px-4 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-2 text-sm';
+    }
   }
   
   // Load data if needed
