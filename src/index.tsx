@@ -991,12 +991,43 @@ app.get('/', (c) => {
         <!-- Hero Section -->
         <section class="gradient-orange-soft py-20 text-center">
             <div class="container mx-auto px-4">
-                <div class="loading-pulse mb-6">
-                    <i class="fas fa-spinner fa-spin text-6xl text-orange-600"></i>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">전라도의 맛과 여행을 한 곳에</h2>
+                <p class="text-xl text-gray-700 mb-8">지역 맛집을 응원하고 전라도 문화를 즐기세요</p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button id="localSupportBtn" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg">
+                        <i class="fas fa-hand-holding-heart mr-2"></i>
+                        우리동네 살리기
+                    </button>
+                    <a href="/restaurants" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg inline-block">
+                        <i class="fas fa-utensils mr-2"></i>
+                        맛집 찾기
+                    </a>
+                    <a href="/merchant-apply" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold transition-all shadow-lg inline-block">
+                        <i class="fas fa-store mr-2"></i>
+                        가맹점 신청
+                    </a>
                 </div>
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">프로젝트 로딩 중...</h2>
-                <p class="text-xl text-gray-700 mb-8">전라도의 모든 맛과 여행을 한 곳에.</p>
-                <p class="text-lg text-gray-600">맛집·축제·촬영지·숙박·농협까지, 전라도 생활지도의 새로운 기준</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg p-4 shadow-md">
+                        <p class="text-3xl font-bold text-orange-500">350+</p>
+                        <p class="text-sm text-gray-600">전라도 맛집</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-md">
+                        <p class="text-3xl font-bold text-orange-500">60+</p>
+                        <p class="text-sm text-gray-600">지역 축제</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-md">
+                        <p class="text-3xl font-bold text-orange-500">32+</p>
+                        <p class="text-sm text-gray-600">맞춤 여행사</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 shadow-md">
+                        <p class="text-3xl font-bold text-orange-500">100+</p>
+                        <p class="text-sm text-gray-600">숙박업소</p>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1099,8 +1130,341 @@ app.get('/', (c) => {
                 </a>
             </div>
         </section>
+
+        <!-- Local Support Modal -->
+        <div id="localSupportModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
+            <div class="min-h-screen px-4 py-8">
+                <div class="bg-white rounded-2xl max-w-4xl mx-auto shadow-2xl">
+                    <!-- Header -->
+                    <div class="sticky top-0 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-t-2xl flex justify-between items-center z-10">
+                        <h2 class="text-2xl font-bold">
+                            <i class="fas fa-hand-holding-heart mr-2"></i>
+                            우리동네 살리기
+                        </h2>
+                        <button id="closeModalBtn" class="text-white hover:text-gray-200">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6 overflow-y-auto" style="max-height: 70vh;">
+                        <!-- 광주광역시 -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-green-500">
+                                <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                                광주광역시 지원대책
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-users mr-2 text-blue-500"></i>청년</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>광주 청년드림수당: 구직청년 월 30만~50만 원 지원</li>
+                                        <li>광주청년 일경험 프로젝트: 중소기업·기관 매칭, 3~6개월 급여 지원</li>
+                                        <li>청년창업 지원센터(GIST·CGI센터 등): 사무공간 무상 + R&D·멘토링</li>
+                                        <li>청년 문화·예술창작 지원비</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-purple-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-home mr-2 text-purple-500"></i>주거·정착</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>광주 청년 임대월세 지원(월 10~20만 원)</li>
+                                        <li>신혼부부·청년 주택자금 대출이자 지원</li>
+                                        <li>도심 빈집 리모델링 후 청년·신혼부부 공급</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-orange-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-store mr-2 text-orange-500"></i>소상공인</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>광주형 상생카드 할인·캐시백 지원</li>
+                                        <li>전통시장 온라인 판매 전환 지원 사업</li>
+                                        <li>제로페이·지역화폐 '광주상생카드' 수수료 절감</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-green-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-camera mr-2 text-green-500"></i>관광·도시재생</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>광주 관광인재 육성 & 관광스타트업 공모</li>
+                                        <li>예술의거리·양림동·국립아시아문화전당(ACC) 지역 연계 콘텐츠 지원</li>
+                                        <li>청년·문화기획자 도시재생 프로젝트 공모</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 전주특례시 -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-green-500">
+                                <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                                전주특례시 지원대책
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-rocket mr-2 text-blue-500"></i>청년·창업</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전주 청년사관학교(청년 창업클러스터)</li>
+                                        <li>창업보육센터·메이커스페이스 연계 지원</li>
+                                        <li>전주 스타트업 밸리 입주 지원</li>
+                                        <li>청년생활안정자금(월세·교통 등 생활비)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-pink-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-palette mr-2 text-pink-500"></i>문화·관광</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>한옥마을 기반 관광스타트업 지원</li>
+                                        <li>전주국제영화제·비빔밥 등 로컬축제 창업 연계</li>
+                                        <li>야시장·공예창업·식문화 창업 지원</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-yellow-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-building mr-2 text-yellow-600"></i>도시재생·주거</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>도시재생(팔복동·객사·서학동) 창업자 임대료 지원</li>
+                                        <li>빈집활용창업(1유형 리모델링 지원, 2유형 임대료 지원)</li>
+                                        <li>전주 특례시 청년·신혼부부 주거지원</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-green-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-seedling mr-2 text-green-600"></i>농업·귀촌</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전주시 귀농귀촌센터 운영</li>
+                                        <li>초기정착 사업비 / 임시거주 시설 제공</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 전라남도 -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-green-500">
+                                <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                                전라남도 지원대책
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-user-graduate mr-2 text-blue-500"></i>청년</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전남 청년 프로젝트 "청년마을 만들기"</li>
+                                        <li>전남 청년 근속장려금(3년 1,200만 원)</li>
+                                        <li>전남 청년 월세 지원·청년 취업성공패키지</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-green-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-tractor mr-2 text-green-600"></i>귀농·귀촌</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전남형 귀농귀촌 종합지원</li>
+                                        <li>주택 수리비 최대 1,000만 원</li>
+                                        <li>영농정착지원금 연 3,000만 원</li>
+                                        <li>농기계 임대료 감면(50~80%)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-orange-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-shopping-cart mr-2 text-orange-500"></i>소상공인</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전남 지역화폐(지역상품권) 할인 이벤트 10%</li>
+                                        <li>소상공인 회생자금(무이자·저금리 대출)</li>
+                                        <li>온라인 판매·SNS 광고 지원</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-purple-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-plane-departure mr-2 text-purple-500"></i>관광·문화</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>남도여행 SNS 크리에이터 지원</li>
+                                        <li>전남 관광택시·지역축제 연계 홍보 지원</li>
+                                        <li>농촌체험·어촌체험 관광기업 육성</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 전라북도 -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-green-500">
+                                <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                                전라북도 지원대책
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-graduation-cap mr-2 text-blue-500"></i>청년</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전북 청년 지역정착 지원금</li>
+                                        <li>전북 청년 활동공간 지원(쉼·창업·문화공간 무료 사용)</li>
+                                        <li>전북 디지털 청년 일자리 지원(기업 인건비 지원)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-indigo-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-lightbulb mr-2 text-indigo-500"></i>창업·기업</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전북 창업보육센터 / 농생명·디지털 창업특구 지원</li>
+                                        <li>전북형 소상공인 회복지원금(융자, 컨설팅)</li>
+                                        <li>스마트스토어·온라인 판매 교육</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-green-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-leaf mr-2 text-green-600"></i>농업·귀촌</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전북 귀농귀촌 종합센터 운영</li>
+                                        <li>청년 농업인 스마트팜 지원</li>
+                                        <li>농기계은행·창업보조금 지원</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-pink-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-monument mr-2 text-pink-500"></i>관광·도시재생</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>전북 문화관광 이벤트(전북투어패스 연계)</li>
+                                        <li>군산·전주·익산 역사문화권 도시재생사업</li>
+                                        <li>관광형 로컬푸드·마을기업 육성</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 시/군 공통 프로그램 -->
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-green-500">
+                                <i class="fas fa-map-marker-alt text-green-500 mr-2"></i>
+                                전남·전북 시/군 공통 지원 프로그램
+                            </h3>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-cyan-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-briefcase mr-2 text-cyan-600"></i>청년·일자리</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>청년센터 운영 / 코워킹스페이스 무료 제공</li>
+                                        <li>지역청년 활동가 지원(월 100~200만 원)</li>
+                                        <li>청년월세 지원(월 10~20만 원)</li>
+                                        <li>청년단체 활동비 지원(연 300~1,000만 원)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-lime-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-mountain mr-2 text-lime-600"></i>귀농·귀촌</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>귀농 주택수리비·농지 구입비</li>
+                                        <li>1년 체류형 농촌학교</li>
+                                        <li>영농기초기술 교육</li>
+                                        <li>농기계 임대 70% 감면</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-amber-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-cash-register mr-2 text-amber-600"></i>소상공인</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>간판교체·인테리어 지원(200~2,000만 원)</li>
+                                        <li>배달 플랫폼 사용 수수료 지원</li>
+                                        <li>전통시장 현대화 사업</li>
+                                        <li>신사업 아이디어 공모(연 500~2,000만 원 지원)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-rose-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-umbrella-beach mr-2 text-rose-500"></i>관광·축제</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>지역 축제 운영비 지원</li>
+                                        <li>로컬푸드 기반 점포 창업 지원</li>
+                                        <li>마을해설사·관광택시 운영</li>
+                                        <li>SNS·인플루언서 마케팅 지원</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-violet-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-house-user mr-2 text-violet-500"></i>주거·정착</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>청년·신혼부부 전세자금 이자 지원</li>
+                                        <li>귀농귀촌 임시거처 제공</li>
+                                        <li>농촌 빈집 리모델링 후 임대</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-sky-50 rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-book-reader mr-2 text-sky-500"></i>교육·복지</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700 ml-4">
+                                        <li>아동·학부모 돌봄센터</li>
+                                        <li>고령자 디지털교육·일자리</li>
+                                        <li>장애인·취약계층 주거 보수사업</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 안내 문구 -->
+                        <div class="bg-green-50 border-2 border-green-500 rounded-lg p-6 text-center">
+                            <i class="fas fa-info-circle text-green-500 text-3xl mb-3"></i>
+                            <p class="text-gray-800 font-semibold mb-2">더 자세한 정보가 필요하신가요?</p>
+                            <p class="text-sm text-gray-600 mb-4">각 지자체 홈페이지나 청년센터에 문의하시면 상세한 지원 안내를 받으실 수 있습니다.</p>
+                            <div class="flex flex-wrap justify-center gap-2 text-xs">
+                                <span class="bg-white px-3 py-1 rounded-full border border-green-300">광주시청</span>
+                                <span class="bg-white px-3 py-1 rounded-full border border-green-300">전주시청</span>
+                                <span class="bg-white px-3 py-1 rounded-full border border-green-300">전라남도청</span>
+                                <span class="bg-white px-3 py-1 rounded-full border border-green-300">전라북도청</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="bg-gray-50 px-6 py-4 rounded-b-2xl text-center">
+                        <button id="closeModalFooterBtn" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition-all">
+                            <i class="fas fa-check mr-2"></i>
+                            확인
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <script>
+          // Show/hide local support modal
+          document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('localSupportModal');
+            const openBtn = document.getElementById('localSupportBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const closeFooterBtn = document.getElementById('closeModalFooterBtn');
+            
+            function showModal() {
+              modal.classList.remove('hidden');
+              document.body.style.overflow = 'hidden';
+            }
+            
+            function hideModal() {
+              modal.classList.add('hidden');
+              document.body.style.overflow = 'auto';
+            }
+            
+            if (openBtn) {
+              openBtn.addEventListener('click', showModal);
+            }
+            
+            if (closeBtn) {
+              closeBtn.addEventListener('click', hideModal);
+            }
+            
+            if (closeFooterBtn) {
+              closeFooterBtn.addEventListener('click', hideModal);
+            }
+            
+            // Close on backdrop click
+            modal.addEventListener('click', function(e) {
+              if (e.target === modal) {
+                hideModal();
+              }
+            });
+          });
+
           // Load featured restaurants
           async function loadFeaturedRestaurants() {
             try {

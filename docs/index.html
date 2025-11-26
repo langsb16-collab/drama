@@ -1227,9 +1227,101 @@
         </div>
     </section>
 
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="fixed bottom-6 right-6 z-50">
+        <!-- Chatbot Button -->
+        <div id="chatbot-button" class="relative cursor-pointer" onclick="toggleChatbot()">
+            <!-- Speech Bubble -->
+            <div id="chatbot-bubble" class="absolute bottom-full right-0 mb-3 bg-white rounded-2xl p-3 shadow-lg border-2 border-indigo-300 max-w-[180px] transition-opacity duration-300">
+                <div class="text-center text-xs leading-tight text-gray-700 font-medium" id="chatbot-bubble-text">
+                    궁금하신 질문은<br>자동 응답 봇에<br>문의하세요
+                </div>
+                <div class="absolute -bottom-2 right-8 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-indigo-300"></div>
+                <div class="absolute -bottom-1.5 right-8 w-0 h-0 border-l-7 border-l-transparent border-r-7 border-r-transparent border-t-7 border-t-white"></div>
+                <!-- AI Badge -->
+                <div class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">AI</div>
+            </div>
+            
+            <!-- Purple Circle Button -->
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="hidden fixed bottom-24 right-6 w-[90vw] max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm" data-i18n="chatbotTitle">자동 응답 봇</div>
+                        <div class="text-xs opacity-90" data-i18n="chatbotOnline">온라인</div>
+                    </div>
+                </div>
+                <button onclick="toggleChatbot()" class="text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Messages -->
+            <div id="chatbot-messages" class="h-96 overflow-y-auto p-4 space-y-3 bg-gray-50">
+                <!-- Welcome Message -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                        </svg>
+                    </div>
+                    <div class="bg-white rounded-2xl rounded-tl-none p-3 shadow-sm max-w-[80%]">
+                        <p class="text-sm text-gray-800" data-i18n="chatbotWelcome">안녕하세요! JT365 자동 응답 봇입니다. 무엇을 도와드릴까요?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Questions -->
+            <div class="p-3 bg-white border-t border-gray-200">
+                <div class="text-xs text-gray-500 mb-2" data-i18n="chatbotQuickQ">자주 묻는 질문</div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="sendQuickQuestion('q1')" class="px-3 py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs rounded-full transition" data-i18n="chatbotQ1">JT365가 뭐예요?</button>
+                    <button onclick="sendQuickQuestion('q2')" class="px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs rounded-full transition" data-i18n="chatbotQ2">중고거래 방법</button>
+                    <button onclick="sendQuickQuestion('q3')" class="px-3 py-1.5 bg-pink-50 hover:bg-pink-100 text-pink-700 text-xs rounded-full transition" data-i18n="chatbotQ3">회원가입 방법</button>
+                </div>
+            </div>
+            
+            <!-- Input -->
+            <div class="p-4 bg-white border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input 
+                        type="text" 
+                        id="chatbot-input" 
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" 
+                        placeholder="질문을 입력하세요..."
+                        onkeypress="if(event.key==='Enter') sendMessage()"
+                    >
+                    <button onclick="sendMessage()" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-2 rounded-full hover:shadow-lg transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Load JavaScript -->
     <script src="./i18n.js"></script>
     <script src="./auth.js"></script>
     <script src="./app.js"></script>
+    <script src="./chatbot.js"></script>
 </body>
 </html>
