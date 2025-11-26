@@ -39,6 +39,10 @@ const translations = {
     travelTitle: '맞춤형 소형 여행사 32곳',
     travelDescription: '특별한 경험을 제공하는 전문 여행사를 만나보세요',
     
+    // Festivals Section
+    festivalTitle: '전라도 지역 축제',
+    festivalDesc: '전라도 지역의 다채로운 축제와 문화 행사 정보',
+    
     // CTA Section
     ctaTitle: '배달 수수료 0원!',
     ctaDescription: '사장님 부담 없는 배달, 지금 무료로 입점하세요',
@@ -139,6 +143,10 @@ const translations = {
     // Travel Section
     travelTitle: '32 Specialized Travel Agencies',
     travelDescription: 'Meet professional travel agencies offering unique experiences',
+    
+    // Festivals Section
+    festivalTitle: 'Jeolla Region Festivals',
+    festivalDesc: 'Diverse festivals and cultural events in the Jeolla region',
     
     // CTA Section
     ctaTitle: 'Zero Delivery Fee!',
@@ -241,6 +249,10 @@ const translations = {
     travelTitle: '32家专业旅行社',
     travelDescription: '提供独特体验的专业旅行社',
     
+    // Festivals Section
+    festivalTitle: '全罗道地区庆典',
+    festivalDesc: '全罗道地区丰富多彩的庆典和文化活动信息',
+    
     // CTA Section
     ctaTitle: '配送费零元！',
     ctaDescription: '现在免费入驻，无负担',
@@ -341,6 +353,10 @@ const translations = {
     // Travel Section
     travelTitle: '専門旅行会社32社',
     travelDescription: '特別な体験を提供する専門旅行会社',
+    
+    // Festivals Section
+    festivalTitle: '全羅道地域の祭り',
+    festivalDesc: '全羅道地域の多彩な祭りと文化イベント情報',
     
     // CTA Section
     ctaTitle: '配送料無料！',

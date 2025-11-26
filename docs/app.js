@@ -32,6 +32,7 @@ function showSection(sectionName) {
   // Hide all sections
   document.getElementById('restaurants').style.display = 'none';
   document.getElementById('travel').style.display = 'none';
+  document.getElementById('festivals').style.display = 'none';
   document.getElementById('marketplace').style.display = 'none';
   document.getElementById('community').style.display = 'none';
   
