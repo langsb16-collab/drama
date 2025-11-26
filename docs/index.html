@@ -266,85 +266,171 @@
     </section>
 
     <!-- Marketplace Section (사고팔고) -->
-    <section id="marketplace" class="py-16 bg-gray-50" style="display: none;">
+    <section id="marketplace" class="py-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50" style="display: none;">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-gray-800 mb-4">
-                    <i class="fas fa-store text-orange-500 mr-2"></i>
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-indigo-800 mb-3">
+                    <i class="fas fa-store text-purple-600 mr-2"></i>
                     <span data-i18n="tabMarketplace">사고팔고</span>
                 </h3>
-                <p class="text-lg text-gray-600" data-i18n="marketplaceDescription">우리 동네 중고거래 플랫폼</p>
+                <p class="text-base text-purple-700" data-i18n="marketplaceDescription">우리 동네 안심 중고거래 플랫폼</p>
             </div>
 
-            <!-- Features Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition">
-                    <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+            <!-- 핵심 기능 (50% 축소) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg mb-2">안심거래</h4>
-                    <p class="text-sm text-gray-600">에스크로 기반 안전결제<br>QR 직거래 인증</p>
+                    <h4 class="font-bold text-base mb-1 text-white">안심거래</h4>
+                    <p class="text-xs text-blue-100">에스크로 기반 안전결제<br>QR 직거래 인증</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition">
-                    <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg mb-2">동네 인증</h4>
-                    <p class="text-sm text-gray-600">GPS 위치 기반<br>반경 500m 실시간 알림</p>
+                    <h4 class="font-bold text-base mb-1 text-white">동네 인증</h4>
+                    <p class="text-xs text-green-100">GPS 위치 기반<br>반경 500m 실시간 알림</p>
                 </div>
 
-                <div class="bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition">
-                    <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-comments text-white text-2xl"></i>
+                <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-comments text-purple-600 text-xl"></i>
                     </div>
-                    <h4 class="font-bold text-lg mb-2">1:1 채팅</h4>
-                    <p class="text-sm text-gray-600">빠른 응답 구조<br>거래 후기 점수</p>
+                    <h4 class="font-bold text-base mb-1 text-white">1:1 채팅</h4>
+                    <p class="text-xs text-purple-100">빠른 응답 구조<br>거래 후기 점수</p>
                 </div>
             </div>
 
-            <!-- Categories Grid -->
-            <div class="bg-white rounded-xl p-8 shadow-lg">
-                <h4 class="font-bold text-xl mb-6 text-center">거래 카테고리</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-tv text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">생활가전</p>
+            <!-- 안심거래 상세 설명 -->
+            <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+                <h4 class="font-bold text-xl mb-4 text-indigo-800 border-b-2 border-indigo-200 pb-2">
+                    <i class="fas fa-lock text-indigo-600 mr-2"></i>안심거래 (에스크로 기반) 제작 기준
+                </h4>
+                
+                <!-- 핵심 목표 -->
+                <div class="mb-6">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ 핵심 목표</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-gradient-to-r from-red-50 to-pink-50 p-3 rounded-lg border-l-4 border-red-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ 사기 방지</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border-l-4 border-blue-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ 판매자·구매자 모두 보호</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border-l-4 border-green-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ QR 기반 오프라인 거래 인증</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 필수 기능 -->
+                <div class="mb-6">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ 필수 기능</h5>
+                    
+                    <!-- ① 결제 중간예치 -->
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4 border-l-4 border-blue-600">
+                        <h6 class="font-bold text-base mb-2 text-blue-800">① 결제 중간예치 (Escrow)</h6>
+                        <p class="text-sm mb-2 text-gray-700"><strong>PG 연동:</strong> 토스페이먼츠 / KG이니시스 / 나이스페이</p>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 구매자가 결제 → 금액은 에스크로에 보관</p>
+                            <p>• 구매확정 시 판매자에게 송금</p>
+                            <p>• 미수령/문제 발생 시 환불 처리</p>
+                        </div>
+                    </div>
+
+                    <!-- ② QR 직접거래 인증 -->
+                    <div class="bg-green-50 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                        <h6 class="font-bold text-base mb-2 text-green-800">② QR 직접거래 인증</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• QR 생성 (상품 단위)</p>
+                            <p>• 구매자가 QR 스캔 → '직접거래 완료' 인증</p>
+                            <p>• 직거래 현장에서 즉시 확인 가능</p>
+                            <p>• 판매자 단말기 없이도 모바일만으로 구현 가능</p>
+                        </div>
+                    </div>
+
+                    <!-- ③ 위험거래 자동탐지 -->
+                    <div class="bg-red-50 p-4 rounded-lg mb-4 border-l-4 border-red-600">
+                        <h6 class="font-bold text-base mb-2 text-red-800">③ 위험거래 자동탐지</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 이상한 패턴 자동 경고</p>
+                            <p>• 가격이 너무 낮은 경우</p>
+                            <p>• 신규 계정 거래량 급증</p>
+                            <p>• 신고 다수 발생 시 자동 차단</p>
+                        </div>
+                    </div>
+
+                    <!-- ④ 거래후기/별점 -->
+                    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-600">
+                        <h6 class="font-bold text-base mb-2 text-yellow-800">④ 거래후기/별점</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 거래가 성사된 사용자만 후기 작성 가능</p>
+                            <p>• 거래 48시간 후 자동 알림 → 후기 작성 유도</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UX 기준 -->
+                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border-2 border-purple-300">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ UX 기준</h5>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p><strong>• 결제 버튼:</strong> 상품 상세페이지 하단에 고정</p>
+                        <p><strong>• 결제 진행 단계:</strong></p>
+                        <div class="ml-6 bg-white p-3 rounded-lg mt-2 space-y-1">
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">1</span>가격 확인</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">2</span>배송/직거래 선택</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">3</span>결제</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">4</span>에스크로 보관 안내</p>
+                        </div>
+                        <p class="mt-2"><strong>• 처리 시간:</strong> 사용자는 3~4단계에서 10초 내 처리 가능해야 함</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 거래 카테고리 (50% 축소) -->
+            <div class="bg-white rounded-xl p-4 shadow-lg">
+                <h4 class="font-bold text-lg mb-4 text-center text-indigo-800">거래 카테고리</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-purple-50 hover:to-purple-100 hover:border-purple-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tv text-purple-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">생활가전</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-couch text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">가구·인테리어</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-blue-50 hover:to-blue-100 hover:border-blue-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-couch text-blue-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">가구·인테리어</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-paw text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">반려동물용품</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-green-50 hover:to-green-100 hover:border-green-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-paw text-green-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">반려동물용품</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-seedling text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">농산물·직거래</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-emerald-50 hover:to-emerald-100 hover:border-emerald-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-seedling text-emerald-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">농산물·직거래</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-tools text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">공구·DIY</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-orange-50 hover:to-orange-100 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tools text-orange-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">공구·DIY</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-tshirt text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">의류·잡화</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-pink-50 hover:to-pink-100 hover:border-pink-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tshirt text-pink-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">의류·잡화</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-book text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">도서·교육</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-yellow-50 hover:to-yellow-100 hover:border-yellow-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-book text-yellow-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">도서·교육</p>
                     </button>
-                    <button class="p-6 bg-gray-50 rounded-lg hover:bg-orange-50 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
-                        <i class="fas fa-ellipsis-h text-orange-500 text-3xl mb-3"></i>
-                        <p class="text-sm font-semibold">기타</p>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-indigo-50 hover:to-indigo-100 hover:border-indigo-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-ellipsis-h text-indigo-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">기타</p>
                     </button>
                 </div>
             </div>
 
             <!-- CTA Button -->
-            <div class="text-center mt-8">
-                <button onclick="alert('중고거래 기능은 곧 출시될 예정입니다!')" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl">
+            <div class="text-center mt-6">
+                <button onclick="alert('중고거래 기능은 곧 출시될 예정입니다!\n\n에스크로 기반 안심거래 시스템으로\n안전하고 편리한 거래를 제공합니다.')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 rounded-full font-bold text-base transition shadow-lg hover:shadow-xl">
                     <i class="fas fa-plus-circle mr-2"></i>물건 등록하기 (준비 중)
                 </button>
             </div>
