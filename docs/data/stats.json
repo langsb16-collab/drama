@@ -1,13 +1,13 @@
 {
-  "total_restaurants": 200,
-  "total_festivals": 30,
+  "total_restaurants": 350,
+  "total_festivals": 60,
   "total_menus": 0,
   "jeonnam_restaurants": 0,
   "jeonbuk_restaurants": 0,
   "categories": {
-    "undefined": 200
+    "undefined": 350
   },
   "regions": {
-    "undefined": 200
+    "undefined": 350
   }
 }
