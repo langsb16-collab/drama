@@ -75,27 +75,56 @@ let currentView = 'list'; // 'list' or 'answer'
 
 // Toggle chatbot window
 function toggleChatbot() {
+  console.log('✅ toggleChatbot called');
   chatbotOpen = !chatbotOpen;
-  const window = document.getElementById('chatbot-window');
+  const chatWindow = document.getElementById('chatbot-window');
   const bubble = document.getElementById('chatbot-bubble');
   
+  console.log('📌 chatbotOpen:', chatbotOpen);
+  console.log('📌 chatWindow:', chatWindow);
+  console.log('📌 bubble:', bubble);
+  
   if (chatbotOpen) {
-    window.classList.remove('hidden');
-    bubble.style.opacity = '0';
-    bubble.style.pointerEvents = 'none';
+    if (chatWindow) chatWindow.classList.remove('hidden');
+    if (bubble) {
+      bubble.style.opacity = '0';
+      bubble.style.pointerEvents = 'none';
+    }
     showQuestionList();
   } else {
-    window.classList.add('hidden');
-    bubble.style.opacity = '1';
-    bubble.style.pointerEvents = 'auto';
+    if (chatWindow) chatWindow.classList.add('hidden');
+    if (bubble) {
+      bubble.style.opacity = '1';
+      bubble.style.pointerEvents = 'auto';
+    }
   }
+}
+
+// Make sure toggleChatbot is available globally
+if (typeof window !== 'undefined') {
+  window.toggleChatbot = toggleChatbot;
 }
 
 // Show question list
 function showQuestionList() {
+  console.log('✅ showQuestionList called');
   const lang = currentLanguage || 'ko';
   const qa = chatbotQA[lang];
   const container = document.getElementById('chatbot-questions');
+  
+  console.log('📌 Current language:', lang);
+  console.log('📌 QA data:', qa);
+  console.log('📌 Container:', container);
+  
+  if (!container) {
+    console.error('❌ chatbot-questions container not found!');
+    return;
+  }
+  
+  if (!qa || qa.length === 0) {
+    console.error('❌ No QA data for language:', lang);
+    return;
+  }
   
   container.innerHTML = '';
   
@@ -119,10 +148,22 @@ function showQuestionList() {
 
 // Show answer
 function showAnswer(index) {
+  console.log('✅ showAnswer called with index:', index);
   const lang = currentLanguage || 'ko';
   const qa = chatbotQA[lang];
+  
+  if (!qa || !qa[index]) {
+    console.error('❌ Invalid question index:', index);
+    return;
+  }
+  
   const item = qa[index];
   const container = document.getElementById('chatbot-questions');
+  
+  if (!container) {
+    console.error('❌ chatbot-questions container not found!');
+    return;
+  }
   
   container.innerHTML = `
     <div class="space-y-4">
@@ -219,19 +260,34 @@ function updateChatbotBubble() {
 
 // Listen for language changes
 if (typeof window !== 'undefined') {
+  // Store original changeLanguage function
   const originalChangeLanguage = window.changeLanguage;
+  
+  // Override changeLanguage to update chatbot
   window.changeLanguage = function(lang) {
+    console.log('🌍 Language changed to:', lang);
     currentLanguage = lang;
-    if (originalChangeLanguage) {
+    
+    // Call original function
+    if (originalChangeLanguage && typeof originalChangeLanguage === 'function') {
       originalChangeLanguage(lang);
     }
+    
+    // Update chatbot
     updateChatbotBubble();
   };
-}
-
-// Initialize on page load
-if (typeof window !== 'undefined') {
+  
+  // Initialize on page load
   window.addEventListener('DOMContentLoaded', () => {
+    console.log('✅ Chatbot initialized');
+    currentLanguage = window.currentLanguage || 'ko';
     updateChatbotBubble();
   });
+  
+  // Also try immediate initialization
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    console.log('✅ Chatbot immediate init');
+    currentLanguage = window.currentLanguage || 'ko';
+    updateChatbotBubble();
+  }
 }
