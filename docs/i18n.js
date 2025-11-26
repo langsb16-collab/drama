@@ -2,7 +2,8 @@
 const translations = {
   ko: {
     // Header
-    siteTitle: '전라도 로컬 미식 슈퍼로드',
+    siteTitle: '전라도 미식',
+    siteTitleLine2: '슈퍼로드',
     siteSubtitle: 'Jeonlado Local Food Superroad',
     
     // Hero Section
@@ -90,6 +91,16 @@ const translations = {
     marketplaceTitle: '사고팔고',
     marketplaceDescription: '우리 동네 중고거래 플랫폼',
     
+    // Footer
+    footerTitle: '전라도 미식 슈퍼로드',
+    footerDesc: '전라도의 모든 맛과 여행을 한 곳에서 만나보세요',
+    footerQuickLinks: '바로가기',
+    footerRestaurants: '맛집',
+    footerFestivals: '축제',
+    footerContact: '가맹점 문의',
+    footerContactTitle: '문의',
+    footerCopyright: '© 2024 전라도 미식 슈퍼로드. All rights reserved.',
+    
     // Auth
     login: '로그인',
     register: '회원가입',
@@ -130,7 +141,8 @@ const translations = {
   
   en: {
     // Header
-    siteTitle: 'Jeonlado Local Food Superroad',
+    siteTitle: 'Jeonlado Gourmet',
+    siteTitleLine2: 'Superroad',
     siteSubtitle: 'Discover Authentic Korean Cuisine & Culture',
     
     // Hero Section
@@ -206,9 +218,14 @@ const translations = {
     ctaButton: 'Contact Us',
     
     // Footer
-    footerLinks: 'Quick Links',
+    footerTitle: 'Jeonlado Gourmet Superroad',
+    footerDesc: 'Discover all the flavors and travel of Jeolla in one place',
+    footerQuickLinks: 'Quick Links',
+    footerRestaurants: 'Restaurants',
+    footerFestivals: 'Festivals',
     footerContact: 'Contact',
-    footerRights: 'Jeonlado Local Food Superroad. All rights reserved.',
+    footerContactTitle: 'Contact',
+    footerCopyright: '© 2024 Jeonlado Gourmet Superroad. All rights reserved.',
     
     // Community Benefits Page
     benefitsTitle: 'Local Benefits',
@@ -258,7 +275,8 @@ const translations = {
   
   zh: {
     // Header
-    siteTitle: '全罗道本地美食超级公路',
+    siteTitle: '全罗道美食',
+    siteTitleLine2: '超级公路',
     siteSubtitle: '探索韩国地道美食与文化',
     
     // Hero Section
@@ -334,9 +352,14 @@ const translations = {
     ctaButton: '联系我们',
     
     // Footer
-    footerLinks: '快速链接',
-    footerContact: '联系方式',
-    footerRights: '全罗道本地美食超级公路。保留所有权利。',
+    footerTitle: '全罗道美食超级公路',
+    footerDesc: '在一处探索全罗道所有美食与旅行',
+    footerQuickLinks: '快速链接',
+    footerRestaurants: '餐厅',
+    footerFestivals: '庆典',
+    footerContact: '商家咨询',
+    footerContactTitle: '联系方式',
+    footerCopyright: '© 2024 全罗道美食超级公路。保留所有权利。',
     
     // Community Benefits Page
     benefitsTitle: '地方福利',
@@ -386,7 +409,8 @@ const translations = {
   
   ja: {
     // Header
-    siteTitle: '全羅道ローカルグルメスーパーロード',
+    siteTitle: '全羅道グルメ',
+    siteTitleLine2: 'スーパーロード',
     siteSubtitle: '本場の韓国料理と文化を発見',
     
     // Hero Section
@@ -462,9 +486,14 @@ const translations = {
     ctaButton: 'お問い合わせ',
     
     // Footer
-    footerLinks: 'クイックリンク',
-    footerContact: 'お問い合わせ',
-    footerRights: '全羅道ローカルグルメスーパーロード。全著作権所有。',
+    footerTitle: '全羅道グルメスーパーロード',
+    footerDesc: '全羅道のすべての味と旅を一箇所で',
+    footerQuickLinks: 'クイックリンク',
+    footerRestaurants: 'レストラン',
+    footerFestivals: '祭り',
+    footerContact: '加盟店お問い合わせ',
+    footerContactTitle: 'お問い合わせ',
+    footerCopyright: '© 2024 全羅道グルメスーパーロード。全著作権所有。',
     
     // Community Benefits Page
     benefitsTitle: '地域特典',
