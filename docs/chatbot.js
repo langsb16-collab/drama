@@ -186,10 +186,10 @@ function updateChatbotBubble() {
   const bubbleText = document.getElementById('chatbot-bubble-text');
   
   const bubbleTexts = {
-    ko: '궁금하신 질문은<br>자동 응답 봇에<br>문의하세요',
-    en: 'Have questions?<br>Ask our<br>chatbot',
-    zh: '有疑问吗？<br>请询问<br>聊天机器人',
-    ja: '質問がありますか？<br>チャットボットに<br>聞いてください'
+    ko: '궁금하신<br>질문은<br>자동응답봇에<br>문의하세요',
+    en: 'Have<br>questions?<br>Ask our<br>chatbot',
+    zh: '有疑问吗？<br>请询问<br>聊天<br>机器人',
+    ja: '質問が<br>ありますか？<br>チャット<br>ボットに'
   };
   
   bubbleText.innerHTML = bubbleTexts[lang];

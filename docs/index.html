@@ -78,19 +78,23 @@
                         <div class="text-base md:text-lg font-bold" data-i18n="siteTitleLine2">슈퍼로드</div>
                     </div>
                 </div>
-                <div class="flex items-center space-x-2">
-                    <!-- Language Buttons -->
-                    <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        🇰🇷 한국어
+                <div class="flex items-center space-x-1 md:space-x-2 flex-wrap">
+                    <!-- Language Buttons (모바일: 국기만, PC: 국기+텍스트) -->
+                    <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2 py-1 rounded-full bg-orange-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                        <span class="hidden md:inline">🇰🇷 한국어</span>
+                        <span class="md:hidden">🇰🇷</span>
                     </button>
-                    <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        🇺🇸 English
+                    <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded-full bg-blue-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                        <span class="hidden md:inline">🇺🇸 English</span>
+                        <span class="md:hidden">🇺🇸</span>
                     </button>
-                    <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-red-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        🇨🇳 中文
+                    <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2 py-1 rounded-full bg-red-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                        <span class="hidden md:inline">🇨🇳 中文</span>
+                        <span class="md:hidden">🇨🇳</span>
                     </button>
-                    <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        🇯🇵 日本語
+                    <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2 py-1 rounded-full bg-purple-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                        <span class="hidden md:inline">🇯🇵 日本語</span>
+                        <span class="md:hidden">🇯🇵</span>
                     </button>
                     
                     <!-- Auth Buttons (로그인 전) -->
@@ -1232,9 +1236,9 @@
         <!-- Chatbot Button -->
         <div id="chatbot-button" class="relative cursor-pointer" onclick="toggleChatbot()">
             <!-- Speech Bubble -->
-            <div id="chatbot-bubble" class="absolute bottom-full right-0 mb-3 bg-white rounded-2xl p-3 shadow-lg border-2 border-indigo-300 max-w-[180px] transition-opacity duration-300">
-                <div class="text-center text-xs leading-tight text-gray-700 font-medium" id="chatbot-bubble-text">
-                    궁금하신 질문은<br>자동 응답 봇에<br>문의하세요
+            <div id="chatbot-bubble" class="absolute bottom-full right-0 mb-3 bg-white rounded-2xl p-2 shadow-lg border-2 border-indigo-300 w-[120px] md:w-[140px] transition-opacity duration-300">
+                <div class="text-center text-[10px] md:text-xs leading-snug text-gray-700 font-medium" id="chatbot-bubble-text" style="line-height: 1.3;">
+                    궁금하신<br>질문은<br>자동응답봇에<br>문의하세요
                 </div>
                 <div class="absolute -bottom-2 right-8 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-indigo-300"></div>
                 <div class="absolute -bottom-1.5 right-8 w-0 h-0 border-l-7 border-l-transparent border-r-7 border-r-transparent border-t-7 border-t-white"></div>
