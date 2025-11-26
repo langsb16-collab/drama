@@ -100,9 +100,43 @@ function toggleChatbot() {
   }
 }
 
-// Make sure toggleChatbot is available globally
-if (typeof window !== 'undefined') {
-  window.toggleChatbot = toggleChatbot;
+// Initialize event listeners
+function initChatbot() {
+  console.log('✅ initChatbot called');
+  
+  // Chatbot button click
+  const chatbotButton = document.getElementById('chatbot-button');
+  if (chatbotButton) {
+    chatbotButton.addEventListener('click', toggleChatbot);
+    console.log('✅ Chatbot button listener added');
+  } else {
+    console.error('❌ chatbot-button not found');
+  }
+  
+  // Close button click
+  const closeBtn = document.getElementById('chatbot-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', toggleChatbot);
+    console.log('✅ Close button listener added');
+  }
+  
+  // Send button click
+  const sendBtn = document.getElementById('chatbot-send-btn');
+  if (sendBtn) {
+    sendBtn.addEventListener('click', sendCustomMessage);
+    console.log('✅ Send button listener added');
+  }
+  
+  // Input enter key
+  const input = document.getElementById('chatbot-input');
+  if (input) {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendCustomMessage();
+      }
+    });
+    console.log('✅ Input enter listener added');
+  }
 }
 
 // Show question list
@@ -279,9 +313,10 @@ if (typeof window !== 'undefined') {
   
   // Initialize on page load
   window.addEventListener('DOMContentLoaded', () => {
-    console.log('✅ Chatbot initialized');
+    console.log('✅ Chatbot DOMContentLoaded');
     currentLanguage = window.currentLanguage || 'ko';
     updateChatbotBubble();
+    initChatbot();
   });
   
   // Also try immediate initialization
@@ -289,5 +324,11 @@ if (typeof window !== 'undefined') {
     console.log('✅ Chatbot immediate init');
     currentLanguage = window.currentLanguage || 'ko';
     updateChatbotBubble();
+    initChatbot();
   }
+  
+  // Make functions globally available for debugging
+  window.toggleChatbot = toggleChatbot;
+  window.showQuestionList = showQuestionList;
+  window.showAnswer = showAnswer;
 }

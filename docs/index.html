@@ -1232,7 +1232,7 @@
     <!-- Chatbot Widget -->
     <div id="chatbot-widget" class="fixed bottom-6 right-6 z-50">
         <!-- Chatbot Button -->
-        <div id="chatbot-button" class="relative cursor-pointer" onclick="toggleChatbot()">
+        <div id="chatbot-button" class="relative cursor-pointer">
             <!-- Speech Bubble -->
             <div id="chatbot-bubble" class="absolute bottom-full right-0 mb-3 bg-white rounded-2xl p-2 shadow-lg border-2 border-indigo-300 w-[120px] md:w-[140px] transition-opacity duration-300">
                 <div class="text-center text-[10px] md:text-xs leading-snug text-gray-700 font-medium" id="chatbot-bubble-text" style="line-height: 1.3;">
@@ -1268,7 +1268,7 @@
                         <div class="text-xs opacity-90">무엇을 도와드릴까요?</div>
                     </div>
                 </div>
-                <button onclick="toggleChatbot()" class="text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-1.5 transition">
+                <button id="chatbot-close-btn" class="text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-1.5 transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -1297,7 +1297,7 @@
                         class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-400 text-sm bg-white" 
                         placeholder="질문을 입력하세요..."
                     >
-                    <button onclick="sendCustomMessage()" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-2 rounded-full hover:shadow-lg transition">
+                    <button id="chatbot-send-btn" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-2 rounded-full hover:shadow-lg transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                         </svg>
