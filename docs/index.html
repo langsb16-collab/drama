@@ -96,18 +96,18 @@
                 </div>
             </div>
             
-            <!-- 두 번째 줄: 국기 언어 버튼 (중앙 정렬) -->
-            <div class="flex justify-center items-center space-x-1 md:space-x-2">
-                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-orange-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+            <!-- 두 번째 줄: 국기 언어 버튼 (중앙 정렬, 모바일 최적화) -->
+            <div class="flex flex-wrap justify-center items-center gap-1 md:gap-2 mt-2">
+                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-3 py-1.5 rounded-full bg-orange-500 text-white text-xs md:text-sm font-bold transition shadow-md hover:shadow-lg border-2 border-white">
                     🇰🇷 한국어
                 </button>
-                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-blue-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-3 py-1.5 rounded-full bg-blue-500 text-white text-xs md:text-sm font-bold transition shadow-md hover:shadow-lg border-2 border-white opacity-50">
                     🇺🇸 English
                 </button>
-                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-red-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-3 py-1.5 rounded-full bg-red-500 text-white text-xs md:text-sm font-bold transition shadow-md hover:shadow-lg border-2 border-white opacity-50">
                     🇨🇳 中文
                 </button>
-                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-purple-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-3 py-1.5 rounded-full bg-purple-500 text-white text-xs md:text-sm font-bold transition shadow-md hover:shadow-lg border-2 border-white opacity-50">
                     🇯🇵 日本語
                 </button>
             </div>
