@@ -460,5 +460,4 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 활성 언어 버튼 표시 - 초기 로드 시에도 각 언어별 색상 적용
   changeLanguage(currentLanguage);
-  }
 });
