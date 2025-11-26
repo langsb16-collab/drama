@@ -68,9 +68,10 @@
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="gradient-orange text-white py-6 sticky top-0 z-40 shadow-lg">
+    <header class="gradient-orange text-white py-3 md:py-6 sticky top-0 z-40 shadow-lg">
         <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between">
+            <!-- 첫 번째 줄: 로고 + 로그인/회원가입 -->
+            <div class="flex items-center justify-between mb-2">
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-utensils text-2xl md:text-3xl"></i>
                     <div class="leading-tight">
@@ -78,40 +79,37 @@
                         <div class="text-base md:text-lg font-bold" data-i18n="siteTitleLine2">슈퍼로드</div>
                     </div>
                 </div>
-                <div class="flex items-center space-x-1 md:space-x-2 flex-wrap">
-                    <!-- Language Buttons (모바일: 국기만, PC: 국기+텍스트) -->
-                    <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2 py-1 rounded-full bg-orange-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        <span class="hidden md:inline">🇰🇷 한국어</span>
-                        <span class="md:hidden">🇰🇷</span>
+                
+                <!-- Auth Buttons (로그인 전) - 위로 이동, 크기 축소 -->
+                <div id="auth-buttons" class="flex items-center space-x-1 md:space-x-2">
+                    <button onclick="showLoginModal()" class="px-2 md:px-3 py-1 bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-[10px] md:text-sm rounded-full transition">
+                        <i class="fas fa-sign-in-alt mr-1"></i><span data-i18n="login">로그인</span>
                     </button>
-                    <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2 py-1 rounded-full bg-blue-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        <span class="hidden md:inline">🇺🇸 English</span>
-                        <span class="md:hidden">🇺🇸</span>
+                    <button onclick="showRegisterModal()" class="px-2 md:px-3 py-1 bg-white text-orange-500 hover:bg-gray-100 text-[10px] md:text-sm font-semibold rounded-full transition">
+                        <i class="fas fa-user-plus mr-1"></i><span data-i18n="register">회원가입</span>
                     </button>
-                    <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2 py-1 rounded-full bg-red-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        <span class="hidden md:inline">🇨🇳 中文</span>
-                        <span class="md:hidden">🇨🇳</span>
-                    </button>
-                    <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2 py-1 rounded-full bg-purple-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
-                        <span class="hidden md:inline">🇯🇵 日本語</span>
-                        <span class="md:hidden">🇯🇵</span>
-                    </button>
-                    
-                    <!-- Auth Buttons (로그인 전) -->
-                    <div id="auth-buttons" class="flex items-center space-x-2">
-                        <button onclick="showLoginModal()" class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-sm rounded-full transition">
-                            <i class="fas fa-sign-in-alt mr-1"></i><span data-i18n="login">로그인</span>
-                        </button>
-                        <button onclick="showRegisterModal()" class="px-4 py-2 bg-white text-orange-500 hover:bg-gray-100 text-sm font-semibold rounded-full transition">
-                            <i class="fas fa-user-plus mr-1"></i><span data-i18n="register">회원가입</span>
-                        </button>
-                    </div>
-                    
-                    <!-- User Info (로그인 후) -->
-                    <div id="user-info" class="hidden">
-                        <!-- JavaScript로 동적 생성 -->
-                    </div>
                 </div>
+                
+                <!-- User Info (로그인 후) -->
+                <div id="user-info" class="hidden">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+            </div>
+            
+            <!-- 두 번째 줄: 국기 언어 버튼 (중앙 정렬) -->
+            <div class="flex justify-center items-center space-x-1 md:space-x-2">
+                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-orange-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                    🇰🇷 한국어
+                </button>
+                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-blue-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                    🇺🇸 English
+                </button>
+                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-red-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                    🇨🇳 中文
+                </button>
+                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2 md:px-3 py-1 rounded-full bg-purple-500 text-white text-[10px] md:text-xs font-semibold transition shadow-md hover:shadow-lg">
+                    🇯🇵 日本語
+                </button>
             </div>
         </div>
     </header>
