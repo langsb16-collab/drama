@@ -91,6 +91,12 @@ const translations = {
     marketplaceTitle: '사고팔고',
     marketplaceDescription: '우리 동네 중고거래 플랫폼',
     
+    // Chatbot
+    chatbotTitle: '챗봇',
+    chatbotSubtitle: '무엇을 도와드릴까요?',
+    chatbotFAQ: '자주 묻는 질문',
+    chatbotBackButton: '← 질문 목록으로 돌아가기',
+    
     // Footer
     footerTitle: '전라도 미식 슈퍼로드',
     footerDesc: '전라도의 모든 맛과 여행을 한 곳에서 만나보세요',
@@ -235,6 +241,12 @@ const translations = {
     marketplaceTitle: 'Marketplace',
     marketplaceDescription: 'Local Second-hand Trading Platform',
     
+    // Chatbot
+    chatbotTitle: 'Chatbot',
+    chatbotSubtitle: 'How can I help you?',
+    chatbotFAQ: 'Frequently Asked Questions',
+    chatbotBackButton: '← Back to question list',
+    
     // Auth
     login: 'Login',
     register: 'Sign Up',
@@ -369,6 +381,12 @@ const translations = {
     marketplaceTitle: '二手交易',
     marketplaceDescription: '本地二手交易平台',
     
+    // Chatbot
+    chatbotTitle: '聊天机器人',
+    chatbotSubtitle: '我能为您做什么？',
+    chatbotFAQ: '常见问题',
+    chatbotBackButton: '← 返回问题列表',
+    
     // Auth
     login: '登录',
     register: '注册',
@@ -502,6 +520,12 @@ const translations = {
     // Marketplace Page
     marketplaceTitle: '中古取引',
     marketplaceDescription: '地域中古取引プラットフォーム',
+    
+    // Chatbot
+    chatbotTitle: 'チャットボット',
+    chatbotSubtitle: '何をお手伝いしましょうか？',
+    chatbotFAQ: 'よくある質問',
+    chatbotBackButton: '← 質問一覧に戻る',
     
     // Auth
     login: 'ログイン',

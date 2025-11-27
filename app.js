@@ -803,32 +803,32 @@ function loadMoreAgencies() {
 function createAgencyCard(agency) {
   return `
     <div class="restaurant-card cursor-pointer" onclick="showAgencyDetail(${agency.id})">
-      <div class="relative h-48 bg-gradient-to-br from-blue-100 to-blue-200">
+      <div class="relative h-24 md:h-48 bg-gradient-to-br from-blue-100 to-blue-200">
         ${agency.image_url ? `
           <img src="${agency.image_url}" alt="${agency.name}" class="w-full h-full object-cover" />
         ` : `
           <div class="w-full h-full flex items-center justify-center">
-            <i class="fas fa-plane text-6xl text-blue-400"></i>
+            <i class="fas fa-plane text-3xl md:text-6xl text-blue-400"></i>
           </div>
         `}
-        <div class="absolute top-3 left-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+        <div class="absolute top-2 md:top-3 left-2 md:left-3 bg-blue-500 text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs font-semibold">
           ${agency.region}
         </div>
-        <div class="absolute top-3 right-3 bg-white text-blue-600 px-2 py-1 rounded-full text-xs flex items-center">
-          <i class="fas fa-star text-yellow-500 mr-1"></i>
+        <div class="absolute top-2 md:top-3 right-2 md:right-3 bg-white text-blue-600 px-1.5 md:px-2 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs flex items-center">
+          <i class="fas fa-star text-yellow-500 mr-0.5 md:mr-1 text-[10px] md:text-xs"></i>
           ${agency.rating}
         </div>
       </div>
-      <div class="p-4">
-        <h4 class="font-bold text-lg mb-2 truncate">${agency.name}</h4>
-        <p class="text-sm text-gray-600 mb-3 line-clamp-2" style="min-height: 40px;">
+      <div class="p-2 md:p-4">
+        <h4 class="font-bold text-sm md:text-lg mb-1 md:mb-2 truncate">${agency.name}</h4>
+        <p class="text-xs md:text-sm text-gray-600 mb-1.5 md:mb-3 line-clamp-2" style="min-height: 30px;">
           ${agency.specialty}
         </p>
-        <div class="text-sm text-gray-600 mb-2">
-          <i class="fas fa-users text-blue-500 mr-1"></i>
+        <div class="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">
+          <i class="fas fa-users text-blue-500 mr-1 text-[10px] md:text-xs"></i>
           ${agency.group_size || '문의'}
         </div>
-        <div class="text-sm font-semibold text-blue-600">
+        <div class="text-xs md:text-sm font-semibold text-blue-600">
           ${agency.price_range || '가격 문의'}
         </div>
       </div>

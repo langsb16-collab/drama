@@ -208,61 +208,61 @@
     </section>
 
     <!-- Travel Agencies Section -->
-    <section id="travel" class="py-16 bg-gray-50" style="display: none;">
+    <section id="travel" class="py-8 md:py-16 bg-gray-50" style="display: none;">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-gray-800 mb-4">
-                    <i class="fas fa-plane text-orange-500 mr-2"></i>
+            <div class="text-center mb-6 md:mb-12">
+                <h3 class="text-lg md:text-3xl font-bold text-gray-800 mb-2 md:mb-4">
+                    <i class="fas fa-plane text-orange-500 mr-1 md:mr-2 text-base md:text-2xl"></i>
                     맞춤형 소형 여행사 32곳
                 </h3>
-                <p class="text-lg text-gray-600">특별한 경험을 제공하는 전문 여행사를 만나보세요</p>
+                <p class="text-sm md:text-lg text-gray-600">특별한 경험을 제공하는 전문 여행사를 만나보세요</p>
             </div>
 
             <!-- Filter Buttons -->
-            <div class="flex justify-center space-x-2 mb-8 flex-wrap">
-                <button onclick="filterAgencies('all')" id="btn-agency-all" class="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold mb-2 text-sm">
+            <div class="flex justify-center space-x-1 md:space-x-2 mb-4 md:mb-8 flex-wrap">
+                <button onclick="filterAgencies('all')" id="btn-agency-all" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-orange-500 text-white font-semibold mb-1 md:mb-2 text-[10px] md:text-sm">
                     전체
                 </button>
-                <button onclick="filterAgencies('서울')" id="btn-agency-서울" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('서울')" id="btn-agency-서울" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     서울 (10)
                 </button>
-                <button onclick="filterAgencies('부산')" id="btn-agency-부산" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('부산')" id="btn-agency-부산" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     부산 (5)
                 </button>
-                <button onclick="filterAgencies('제주')" id="btn-agency-제주" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('제주')" id="btn-agency-제주" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     제주 (5)
                 </button>
-                <button onclick="filterAgencies('강원')" id="btn-agency-강원" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('강원')" id="btn-agency-강원" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     강원 (4)
                 </button>
-                <button onclick="filterAgencies('전라')" id="btn-agency-전라" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('전라')" id="btn-agency-전라" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     전라 (3)
                 </button>
-                <button onclick="filterAgencies('경상')" id="btn-agency-경상" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('경상')" id="btn-agency-경상" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     경상 (3)
                 </button>
-                <button onclick="filterAgencies('인천')" id="btn-agency-인천" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                <button onclick="filterAgencies('인천')" id="btn-agency-인천" class="px-2 md:px-4 py-1 md:py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-1 md:mb-2 text-[10px] md:text-sm">
                     인천 (2)
                 </button>
             </div>
 
             <!-- Loading State -->
-            <div id="agencies-loading" class="text-center py-12">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 loading-pulse">
-                    <i class="fas fa-spinner fa-spin text-white text-2xl"></i>
+            <div id="agencies-loading" class="text-center py-6 md:py-12">
+                <div class="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 loading-pulse">
+                    <i class="fas fa-spinner fa-spin text-white text-lg md:text-2xl"></i>
                 </div>
-                <p class="mt-4 text-gray-600">여행사 정보를 불러오는 중...</p>
+                <p class="mt-2 md:mt-4 text-gray-600 text-sm md:text-base">여행사 정보를 불러오는 중...</p>
             </div>
 
             <!-- Travel Agencies Grid -->
-            <div id="agencies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style="display: none;">
+            <div id="agencies-grid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6" style="display: none;">
                 <!-- Cards will be inserted here by JavaScript -->
             </div>
 
             <!-- Show More Button -->
-            <div class="text-center mt-8" id="show-more-agencies-container" style="display: none;">
-                <button onclick="loadMoreAgencies()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg">
-                    더 보기 <i class="fas fa-chevron-down ml-2"></i>
+            <div class="text-center mt-4 md:mt-8" id="show-more-agencies-container" style="display: none;">
+                <button onclick="loadMoreAgencies()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 md:px-8 py-2 md:py-3 rounded-full font-semibold transition shadow-lg text-sm md:text-base">
+                    더 보기 <i class="fas fa-chevron-down ml-1 md:ml-2"></i>
                 </button>
             </div>
         </div>
@@ -1265,8 +1265,8 @@
                         </svg>
                     </div>
                     <div>
-                        <div class="font-bold text-sm">JT365 챗봇</div>
-                        <div class="text-xs opacity-90">무엇을 도와드릴까요?</div>
+                        <div class="font-bold text-sm" data-i18n="chatbotTitle">챗봇</div>
+                        <div class="text-xs opacity-90" data-i18n="chatbotSubtitle">무엇을 도와드릴까요?</div>
                     </div>
                 </div>
                 <button id="chatbot-close-btn" class="text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-1.5 transition">
@@ -1280,7 +1280,7 @@
             <div class="bg-gradient-to-b from-indigo-50 to-white p-3">
                 <div class="flex items-center space-x-2 mb-2">
                     <span class="text-lg">💡</span>
-                    <h3 class="font-bold text-sm text-gray-800">자주 묻는 질문</h3>
+                    <h3 class="font-bold text-sm text-gray-800" data-i18n="chatbotFAQ">자주 묻는 질문</h3>
                 </div>
             </div>
             
@@ -1313,5 +1313,8 @@
     <script src="./auth.js"></script>
     <script src="./app.js"></script>
     <script src="./chatbot.js"></script>
+</body>
+</html>
+script>
 </body>
 </html>

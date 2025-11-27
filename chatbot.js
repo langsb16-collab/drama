@@ -88,6 +88,11 @@ function toggleChatbot() {
       bubble.style.pointerEvents = 'none';
     }
     showQuestionList();
+    
+    // Apply translations when chatbot opens
+    if (typeof translatePage === 'function') {
+      translatePage(window.currentLanguage || 'ko');
+    }
   } else {
     if (chatWindow) chatWindow.classList.add('hidden');
     if (bubble) {
@@ -175,6 +180,28 @@ function showQuestionList() {
   });
   
   currentView = 'list';
+  
+  // Update chatbot header texts dynamically
+  updateChatbotHeader(lang);
+}
+
+// Update chatbot header with current language
+function updateChatbotHeader(lang) {
+  if (typeof translations === 'undefined') return;
+  
+  const trans = translations[lang] || translations['ko'];
+  
+  // Update title
+  const titleElem = document.querySelector('[data-i18n="chatbotTitle"]');
+  if (titleElem) titleElem.textContent = trans.chatbotTitle || '챗봇';
+  
+  // Update subtitle
+  const subtitleElem = document.querySelector('[data-i18n="chatbotSubtitle"]');
+  if (subtitleElem) subtitleElem.textContent = trans.chatbotSubtitle || '무엇을 도와드릴까요?';
+  
+  // Update FAQ title
+  const faqElem = document.querySelector('[data-i18n="chatbotFAQ"]');
+  if (faqElem) faqElem.textContent = trans.chatbotFAQ || '자주 묻는 질문';
 }
 
 // Show answer
@@ -195,6 +222,11 @@ function showAnswer(index) {
     console.error('❌ chatbot-questions container not found!');
     return;
   }
+  
+  // Get translated button text from translations object
+  const backButtonText = (typeof translations !== 'undefined' && translations[lang]) 
+    ? translations[lang].chatbotBackButton 
+    : '← 질문 목록으로 돌아가기';
   
   container.innerHTML = `
     <div class="space-y-4">
@@ -217,7 +249,7 @@ function showAnswer(index) {
       <!-- Back Button -->
       <div class="text-center pt-2">
         <button onclick="showQuestionList()" class="px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold rounded-full hover:shadow-lg transition">
-          ← 질문 목록으로 돌아가기
+          ${backButtonText}
         </button>
       </div>
     </div>
