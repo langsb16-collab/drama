@@ -217,7 +217,7 @@ function showAnswer(index) {
       <!-- Back Button -->
       <div class="text-center pt-2">
         <button onclick="showQuestionList()" class="px-6 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-semibold rounded-full hover:shadow-lg transition">
-          ← 질문 목록으로 돌아가기
+          <span data-i18n="chatbotBackButton">← 질문 목록으로 돌아가기</span>
         </button>
       </div>
     </div>
@@ -225,6 +225,11 @@ function showAnswer(index) {
   
   currentView = 'answer';
   container.scrollTop = 0;
+  
+  // Apply translations to the back button
+  if (typeof translatePage === 'function') {
+    translatePage(window.currentLanguage || 'ko');
+  }
 }
 
 // Send custom message (from input)
