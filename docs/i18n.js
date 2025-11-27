@@ -553,29 +553,29 @@ function changeLanguage(lang) {
   localStorage.setItem('language', lang);
   updatePageLanguage();
   
-  // 버튼 활성화 상태 업데이트 - 새로운 스타일 (회색 배경 헤더용)
+  // 버튼 활성화 상태 업데이트 - 새로운 스타일 (색상 배경 + 크기 20% 축소)
   const btnKo = document.querySelector('[data-lang="ko"]');
   const btnEn = document.querySelector('[data-lang="en"]');
   const btnZh = document.querySelector('[data-lang="zh"]');
   const btnJa = document.querySelector('[data-lang="ja"]');
   
   // Reset all buttons to inactive state (opacity reduced, 항상 표시)
-  if (btnKo) btnKo.className = 'lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-600 opacity-60';
-  if (btnEn) btnEn.className = 'lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-400 opacity-60';
-  if (btnZh) btnZh.className = 'lang-btn px-4 py-1.5 rounded bg-white text-red-600 text-sm font-bold shadow-md border-2 border-red-400 opacity-60';
-  if (btnJa) btnJa.className = 'lang-btn px-4 py-1.5 rounded bg-white text-purple-600 text-sm font-bold shadow-md border-2 border-purple-400 opacity-60';
+  if (btnKo) btnKo.className = 'lang-btn px-3 py-1 rounded bg-orange-500 text-white text-[10px] font-bold shadow-md opacity-60';
+  if (btnEn) btnEn.className = 'lang-btn px-3 py-1 rounded bg-blue-500 text-white text-[10px] font-bold shadow-md opacity-60';
+  if (btnZh) btnZh.className = 'lang-btn px-3 py-1 rounded bg-red-500 text-white text-[10px] font-bold shadow-md opacity-60';
+  if (btnJa) btnJa.className = 'lang-btn px-3 py-1 rounded bg-purple-500 text-white text-[10px] font-bold shadow-md opacity-60';
   
   // Set active button (full opacity, 항상 표시)
   const activeBtn = document.querySelector(`[data-lang="${lang}"]`);
   if (activeBtn) {
     if (lang === 'ko') {
-      activeBtn.className = 'lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-600';
+      activeBtn.className = 'lang-btn px-3 py-1 rounded bg-orange-500 text-white text-[10px] font-bold shadow-md';
     } else if (lang === 'en') {
-      activeBtn.className = 'lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-400';
+      activeBtn.className = 'lang-btn px-3 py-1 rounded bg-blue-500 text-white text-[10px] font-bold shadow-md';
     } else if (lang === 'zh') {
-      activeBtn.className = 'lang-btn px-4 py-1.5 rounded bg-white text-red-600 text-sm font-bold shadow-md border-2 border-red-400';
+      activeBtn.className = 'lang-btn px-3 py-1 rounded bg-red-500 text-white text-[10px] font-bold shadow-md';
     } else if (lang === 'ja') {
-      activeBtn.className = 'lang-btn px-4 py-1.5 rounded bg-white text-purple-600 text-sm font-bold shadow-md border-2 border-purple-400';
+      activeBtn.className = 'lang-btn px-3 py-1 rounded bg-purple-500 text-white text-[10px] font-bold shadow-md';
     }
   }
 }

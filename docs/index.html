@@ -83,10 +83,10 @@
                 
                 <!-- Auth Buttons (로그인 전) - 오른쪽 상단 -->
                 <div id="auth-buttons" class="flex flex-col items-end gap-1">
-                    <button onclick="showLoginModal()" class="px-3 py-1 bg-white text-blue-600 hover:bg-blue-50 text-sm font-bold rounded shadow-md transition border-2 border-blue-600">
+                    <button onclick="showLoginModal()" class="px-3 py-1 bg-blue-600 text-white hover:bg-blue-700 text-sm font-bold rounded shadow-md transition">
                         <span data-i18n="login">로그인</span>
                     </button>
-                    <button onclick="showRegisterModal()" class="px-3 py-1 bg-white text-blue-600 hover:bg-blue-50 text-sm font-bold rounded shadow-md transition border-2 border-blue-600">
+                    <button onclick="showRegisterModal()" class="px-3 py-1 bg-orange-500 text-white hover:bg-orange-600 text-sm font-bold rounded shadow-md transition">
                         <span data-i18n="register">회원가입</span>
                     </button>
                 </div>
@@ -99,16 +99,16 @@
             
             <!-- 두 번째 줄: 언어 전환 버튼 (중앙, 항상 표시) -->
             <div class="flex justify-center items-center gap-2">
-                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-600">
+                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-3 py-1 rounded bg-orange-500 text-white text-[10px] font-bold shadow-md">
                     한국어
                 </button>
-                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-400 opacity-60">
+                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-3 py-1 rounded bg-blue-500 text-white text-[10px] font-bold shadow-md opacity-60">
                     English
                 </button>
-                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-4 py-1.5 rounded bg-white text-red-600 text-sm font-bold shadow-md border-2 border-red-400 opacity-60">
+                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-3 py-1 rounded bg-red-500 text-white text-[10px] font-bold shadow-md opacity-60">
                     中文
                 </button>
-                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-4 py-1.5 rounded bg-white text-purple-600 text-sm font-bold shadow-md border-2 border-purple-400 opacity-60">
+                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-3 py-1 rounded bg-purple-500 text-white text-[10px] font-bold shadow-md opacity-60">
                     日本語
                 </button>
             </div>
