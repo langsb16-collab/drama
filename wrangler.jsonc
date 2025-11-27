@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "jeonlado-superroad",
   "compatibility_date": "2025-11-25",
-  "pages_build_output_dir": "./dist",
+  "pages_build_output_dir": "./docs",
   "compatibility_flags": [
     "nodejs_compat"
   ]
