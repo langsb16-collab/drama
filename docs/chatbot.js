@@ -88,6 +88,11 @@ function toggleChatbot() {
       bubble.style.pointerEvents = 'none';
     }
     showQuestionList();
+    
+    // Apply translations when chatbot opens
+    if (typeof translatePage === 'function') {
+      translatePage(window.currentLanguage || 'ko');
+    }
   } else {
     if (chatWindow) chatWindow.classList.add('hidden');
     if (bubble) {
@@ -175,6 +180,11 @@ function showQuestionList() {
   });
   
   currentView = 'list';
+  
+  // Apply translations to chatbot header and FAQ title
+  if (typeof translatePage === 'function') {
+    translatePage(window.currentLanguage || 'ko');
+  }
 }
 
 // Show answer
