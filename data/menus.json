@@ -1,0 +1,1132 @@
+{
+  "menus": [
+    {
+      "id": 1,
+      "restaurant_id": 1,
+      "name": "떡갈비 정식",
+      "description": "광주 대표 떡갈비를 정갈한 반찬과 함께",
+      "price": 15000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 1,
+          "menu_id": 1,
+          "name": "맵기 조절",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 1,
+              "option_group_id": 1,
+              "name": "순한맛",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 2,
+              "option_group_id": 1,
+              "name": "보통맛",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 3,
+              "option_group_id": 1,
+              "name": "매운맛",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "menu_id": 1,
+          "name": "추가 옵션",
+          "type": "multiple",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 4,
+              "option_group_id": 2,
+              "name": "곁들이 김치 추가",
+              "price": 2000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 5,
+              "option_group_id": 2,
+              "name": "공기밥 추가",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 6,
+              "option_group_id": 2,
+              "name": "계란 후라이",
+              "price": 1500,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "restaurant_id": 1,
+      "name": "갈비탕",
+      "description": "사골육수에 푹 고아낸 진한 갈비탕",
+      "price": 12000,
+      "category": "탕/국",
+      "image_url": "https://images.unsplash.com/photo-1580397209033-d14ab89c4d3c?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 3,
+      "restaurant_id": 1,
+      "name": "된장찌개",
+      "description": "구수한 된장에 두부와 채소를 듬뿍",
+      "price": 8000,
+      "category": "찌개",
+      "image_url": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 4,
+      "restaurant_id": 1,
+      "name": "떡갈비 2인 세트",
+      "description": "떡갈비 2인분 + 갈비탕 + 반찬",
+      "price": 35000,
+      "category": "세트",
+      "image_url": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 5,
+      "restaurant_id": 1,
+      "name": "공기밥",
+      "description": "갓 지은 따뜻한 쌀밥",
+      "price": 1000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 6,
+      "restaurant_id": 2,
+      "name": "나주곰탕",
+      "description": "24시간 푹 고아낸 진한 사골국물",
+      "price": 10000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 7,
+      "restaurant_id": 2,
+      "name": "특곰탕",
+      "description": "고기를 더 듬뿍 넣은 특별한 곰탕",
+      "price": 13000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1587748966537-0915c76cdee6?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 8,
+      "restaurant_id": 2,
+      "name": "수육",
+      "description": "쫄깃하고 부드러운 삶은 고기",
+      "price": 18000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 9,
+      "restaurant_id": 2,
+      "name": "곰탕+수육 세트",
+      "description": "곰탕과 수육을 함께",
+      "price": 25000,
+      "category": "세트",
+      "image_url": "https://images.unsplash.com/photo-1596040033229-a0b55b3dbdcd?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 10,
+      "restaurant_id": 2,
+      "name": "소주",
+      "description": "참이슬",
+      "price": 4000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 11,
+      "restaurant_id": 3,
+      "name": "홍어삼합",
+      "description": "홍어 + 삼겹살 + 김치의 황홀한 조화",
+      "price": 45000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 3,
+          "menu_id": 11,
+          "name": "고기 양",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 7,
+              "option_group_id": 3,
+              "name": "기본",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 8,
+              "option_group_id": 3,
+              "name": "고기 추가 (100g)",
+              "price": 5000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 9,
+              "option_group_id": 3,
+              "name": "고기 많이 (200g)",
+              "price": 8000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "menu_id": 11,
+          "name": "국물",
+          "type": "single",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 10,
+              "option_group_id": 4,
+              "name": "기본 국물",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 11,
+              "option_group_id": 4,
+              "name": "진한 국물",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 12,
+              "option_group_id": 4,
+              "name": "맑은 국물",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "restaurant_id": 3,
+      "name": "홍어회",
+      "description": "신선한 홍어를 얇게 썬 회",
+      "price": 35000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1580397209033-d14ab89c4d3c?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 13,
+      "restaurant_id": 3,
+      "name": "삼겹살",
+      "description": "두툼하게 썬 국내산 삼겹살",
+      "price": 15000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 14,
+      "restaurant_id": 3,
+      "name": "막걸리",
+      "description": "나주 쌀막걸리",
+      "price": 5000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 15,
+      "restaurant_id": 3,
+      "name": "파전",
+      "description": "바삭한 해물파전",
+      "price": 12000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 16,
+      "restaurant_id": 4,
+      "name": "전주비빔밥",
+      "description": "30가지 나물이 들어간 정통 비빔밥",
+      "price": 11000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 5,
+          "menu_id": 16,
+          "name": "홍어 숙성도",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 13,
+              "option_group_id": 5,
+              "name": "약하게",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 14,
+              "option_group_id": 5,
+              "name": "중간",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 15,
+              "option_group_id": 5,
+              "name": "강하게",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "restaurant_id": 4,
+      "name": "육회비빔밥",
+      "description": "신선한 육회를 올린 비빔밥",
+      "price": 15000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1587748966537-0915c76cdee6?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 18,
+      "restaurant_id": 4,
+      "name": "콩나물국밥",
+      "description": "얼큰한 콩나물국밥",
+      "price": 8000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 19,
+      "restaurant_id": 4,
+      "name": "전주식 떡갈비",
+      "description": "전주 스타일 떡갈비",
+      "price": 13000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1596040033229-a0b55b3dbdcd?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 20,
+      "restaurant_id": 4,
+      "name": "막걸리",
+      "description": "전주 이강주",
+      "price": 6000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 21,
+      "restaurant_id": 5,
+      "name": "세발낙지 볶음",
+      "description": "매콤하게 볶은 싱싱한 세발낙지",
+      "price": 25000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 6,
+          "menu_id": 21,
+          "name": "맵기 조절",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 16,
+              "option_group_id": 6,
+              "name": "안 맵게",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 17,
+              "option_group_id": 6,
+              "name": "보통",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 18,
+              "option_group_id": 6,
+              "name": "매운맛",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 19,
+              "option_group_id": 6,
+              "name": "아주 맵게",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "menu_id": 21,
+          "name": "계란 옵션",
+          "type": "single",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 20,
+              "option_group_id": 7,
+              "name": "반숙 계란",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 21,
+              "option_group_id": 7,
+              "name": "완숙 계란",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 22,
+              "option_group_id": 7,
+              "name": "계란 없이",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "restaurant_id": 5,
+      "name": "낙지연포탕",
+      "description": "시원한 낙지 국물 요리",
+      "price": 22000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 23,
+      "restaurant_id": 5,
+      "name": "낙지비빔밥",
+      "description": "낙지를 넣은 매콤한 비빔밥",
+      "price": 12000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 24,
+      "restaurant_id": 5,
+      "name": "낙지탕탕이",
+      "description": "살아있는 낙지 숙회",
+      "price": 30000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 25,
+      "restaurant_id": 5,
+      "name": "공기밥",
+      "description": "갓 지은 쌀밥",
+      "price": 1000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 26,
+      "restaurant_id": 6,
+      "name": "오리탕",
+      "description": "보양식 오리고기를 푹 끓인 탕",
+      "price": 35000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1512003867696-6d5ce6835040?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 8,
+          "menu_id": 26,
+          "name": "맵기 조절",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 23,
+              "option_group_id": 8,
+              "name": "덜 맵게",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 24,
+              "option_group_id": 8,
+              "name": "보통 매운맛",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 25,
+              "option_group_id": 8,
+              "name": "아주 맵게",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "menu_id": 26,
+          "name": "추가 토핑",
+          "type": "multiple",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 26,
+              "option_group_id": 9,
+              "name": "낙지 추가",
+              "price": 10000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 27,
+              "option_group_id": 9,
+              "name": "야채 추가",
+              "price": 3000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 28,
+              "option_group_id": 9,
+              "name": "공기밥 추가",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "restaurant_id": 6,
+      "name": "오리주물럭",
+      "description": "양념에 재운 오리고기 구이",
+      "price": 32000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 28,
+      "restaurant_id": 6,
+      "name": "오리훈제",
+      "description": "담백한 오리 훈제",
+      "price": 28000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 29,
+      "restaurant_id": 6,
+      "name": "오리백숙",
+      "description": "깔끔한 오리백숙",
+      "price": 38000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 30,
+      "restaurant_id": 6,
+      "name": "소주",
+      "description": "참이슬 후레쉬",
+      "price": 4000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 31,
+      "restaurant_id": 7,
+      "name": "돌산갓김치 정식",
+      "description": "매콤한 갓김치와 반찬",
+      "price": 9000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 10,
+          "menu_id": 31,
+          "name": "크기",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 29,
+              "option_group_id": 10,
+              "name": "소 (2-3인)",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 30,
+              "option_group_id": 10,
+              "name": "중 (3-4인)",
+              "price": 10000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 31,
+              "option_group_id": 10,
+              "name": "대 (5-6인)",
+              "price": 20000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "restaurant_id": 7,
+      "name": "갓김치찌개",
+      "description": "얼큰한 갓김치찌개",
+      "price": 10000,
+      "category": "찌개",
+      "image_url": "https://images.unsplash.com/photo-1564489563601-c53cfc451e93?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 33,
+      "restaurant_id": 7,
+      "name": "생선구이 정식",
+      "description": "갓김치와 함께하는 생선구이",
+      "price": 15000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 34,
+      "restaurant_id": 7,
+      "name": "갓김치 포장",
+      "description": "집에서 즐기는 갓김치 1kg",
+      "price": 12000,
+      "category": "포장",
+      "image_url": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 35,
+      "restaurant_id": 7,
+      "name": "공기밥",
+      "description": "쌀밥",
+      "price": 1000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1564489563601-c53cfc451e93?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 36,
+      "restaurant_id": 8,
+      "name": "짱뚱어탕",
+      "description": "순천만 특산 짱뚱어탕",
+      "price": 18000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 11,
+          "menu_id": 36,
+          "name": "반찬 추가",
+          "type": "multiple",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 32,
+              "option_group_id": 11,
+              "name": "갓김치 리필",
+              "price": 3000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 33,
+              "option_group_id": 11,
+              "name": "반찬 모듬 추가",
+              "price": 5000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 34,
+              "option_group_id": 11,
+              "name": "공기밥 추가",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "restaurant_id": 8,
+      "name": "짱뚱어튀김",
+      "description": "바삭한 짱뚱어 튀김",
+      "price": 15000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 38,
+      "restaurant_id": 8,
+      "name": "장어구이",
+      "description": "통통한 민물장어 구이",
+      "price": 30000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 39,
+      "restaurant_id": 8,
+      "name": "짱뚱어탕+튀김 세트",
+      "description": "탕과 튀김을 함께",
+      "price": 28000,
+      "category": "세트",
+      "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 40,
+      "restaurant_id": 8,
+      "name": "소주",
+      "description": "진로",
+      "price": 4000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 41,
+      "restaurant_id": 9,
+      "name": "담양식 떡갈비",
+      "description": "참나무 숯불에 구운 떡갈비",
+      "price": 14000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 12,
+          "menu_id": 41,
+          "name": "맵기 조절",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 35,
+              "option_group_id": 12,
+              "name": "순한맛",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 36,
+              "option_group_id": 12,
+              "name": "보통맛",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 37,
+              "option_group_id": 12,
+              "name": "매운맛",
+              "price": 1000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "restaurant_id": 9,
+      "name": "떡갈비+불고기 세트",
+      "description": "떡갈비와 불고기 2인 세트",
+      "price": 32000,
+      "category": "세트",
+      "image_url": "https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 43,
+      "restaurant_id": 9,
+      "name": "갈비찜",
+      "description": "양념이 깊게 밴 갈비찜",
+      "price": 38000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1542181961-9590d0c79dab?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 44,
+      "restaurant_id": 9,
+      "name": "된장찌개",
+      "description": "시골된장 찌개",
+      "price": 7000,
+      "category": "찌개",
+      "image_url": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 45,
+      "restaurant_id": 9,
+      "name": "공기밥",
+      "description": "현미밥",
+      "price": 1000,
+      "category": "사이드",
+      "image_url": "https://images.unsplash.com/photo-1514066558159-fc8c737ef259?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 46,
+      "restaurant_id": 10,
+      "name": "광양불고기",
+      "description": "참숯에 구운 광양식 불고기",
+      "price": 16000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": [
+        {
+          "id": 13,
+          "menu_id": 46,
+          "name": "굽기 정도",
+          "type": "single",
+          "required": 1,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 38,
+              "option_group_id": 13,
+              "name": "웰던 (완전히)",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 39,
+              "option_group_id": 13,
+              "name": "미디엄 (적당히)",
+              "price": 0,
+              "is_default": 1,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 40,
+              "option_group_id": 13,
+              "name": "레어 (약하게)",
+              "price": 0,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "menu_id": 46,
+          "name": "추가 옵션",
+          "type": "multiple",
+          "required": 0,
+          "created_at": "2025-11-26 01:41:06",
+          "items": [
+            {
+              "id": 41,
+              "option_group_id": 14,
+              "name": "떡갈비 1개 추가",
+              "price": 7000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            },
+            {
+              "id": 42,
+              "option_group_id": 14,
+              "name": "쌈야채 추가",
+              "price": 3000,
+              "is_default": 0,
+              "is_available": 1,
+              "created_at": "2025-11-26 01:41:06"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "restaurant_id": 10,
+      "name": "불고기 2인 세트",
+      "description": "불고기 2인분 + 반찬",
+      "price": 35000,
+      "category": "세트",
+      "image_url": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 48,
+      "restaurant_id": 10,
+      "name": "불고기전골",
+      "description": "얼큰한 불고기전골",
+      "price": 40000,
+      "category": "메인",
+      "image_url": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 49,
+      "restaurant_id": 10,
+      "name": "된장찌개",
+      "description": "구수한 된장찌개",
+      "price": 7000,
+      "category": "찌개",
+      "image_url": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    },
+    {
+      "id": 50,
+      "restaurant_id": 10,
+      "name": "소주",
+      "description": "처음처럼",
+      "price": 4000,
+      "category": "주류",
+      "image_url": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800",
+      "is_available": 1,
+      "created_at": "2025-11-26 01:40:23",
+      "optionGroups": []
+    }
+  ],
+  "total": 50
+}

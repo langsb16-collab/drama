@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="description" content="전라도 로컬 미식 슈퍼로드 - 맛집, 축제, 여행 올인원 플랫폼">
+    <title>전라도 로컬 미식 슈퍼로드 - 맛집·축제·여행 올인원 플랫폼</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .gradient-orange {
+        background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+      }
+      
+      .gradient-orange-soft {
+        background: linear-gradient(135deg, #FFB399 0%, #FFCC99 100%);
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      
+      .loading-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      .restaurant-card {
+        background: white;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s;
+      }
+
+      .restaurant-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(255,107,53,0.2);
+      }
+
+      .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header - 스크린샷 레이아웃 (회색 배경) -->
+    <header class="bg-gray-300 text-blue-600 py-4 sticky top-0 z-40 shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- 첫 번째 줄: 로고(왼쪽) + 로그인/회원가입(오른쪽) -->
+            <div class="flex items-center justify-between mb-3">
+                <!-- 로고 -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-utensils text-2xl"></i>
+                    <div class="leading-tight">
+                        <div class="text-lg font-bold" data-i18n="siteTitle">전라도 미식</div>
+                        <div class="text-lg font-bold" data-i18n="siteTitleLine2">슈퍼로드</div>
+                    </div>
+                </div>
+                
+                <!-- Auth Buttons (로그인 전) - 오른쪽 상단 -->
+                <div id="auth-buttons" class="flex flex-col items-end gap-1">
+                    <button onclick="showLoginModal()" class="px-3 py-1 bg-blue-600 text-white hover:bg-blue-700 text-sm font-bold rounded shadow-md transition">
+                        <span data-i18n="login">로그인</span>
+                    </button>
+                    <button onclick="showRegisterModal()" class="px-3 py-1 bg-orange-500 text-white hover:bg-orange-600 text-sm font-bold rounded shadow-md transition">
+                        <span data-i18n="register">회원가입</span>
+                    </button>
+                </div>
+                
+                <!-- User Info (로그인 후) -->
+                <div id="user-info" class="hidden">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+            </div>
+            
+            <!-- 두 번째 줄: 언어 전환 버튼 (중앙, 항상 표시) -->
+            <div class="flex justify-center items-center gap-2">
+                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-3 py-1 rounded bg-orange-500 text-white text-[10px] font-bold shadow-md">
+                    한국어
+                </button>
+                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-3 py-1 rounded bg-blue-500 text-white text-[10px] font-bold shadow-md opacity-60">
+                    English
+                </button>
+                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-3 py-1 rounded bg-red-500 text-white text-[10px] font-bold shadow-md opacity-60">
+                    中文
+                </button>
+                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-3 py-1 rounded bg-purple-500 text-white text-[10px] font-bold shadow-md opacity-60">
+                    日本語
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="gradient-orange-soft py-6 md:py-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-3" data-i18n="heroTitle">
+                    전라도의 맛과 여행을 한 곳에
+                </h2>
+                <p class="text-sm md:text-base text-gray-700 mb-4 md:mb-6 leading-snug" data-i18n="heroDescription">
+                    지역 맛집·축제·촬영지·여행사·근처 농협, 지역민 중고거래, 무료 배달앱<br class="hidden md:block">
+                    전라도 생활지도의 새로운 기준
+                </p>
+                
+                <!-- Navigation Tabs -->
+                <div class="flex justify-center space-x-1 md:space-x-2 mb-4 md:mb-6 flex-wrap">
+                    <button onclick="showSection('restaurants')" id="tab-restaurants" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold shadow-lg hover:shadow-xl transition mb-1 md:mb-2 text-xs md:text-sm">
+                        <i class="fas fa-utensils mr-1"></i><span data-i18n="tabRestaurants">맛집, 무료배달</span>
+                    </button>
+                    <button onclick="showSection('marketplace')" id="tab-marketplace" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold shadow-lg hover:shadow-xl transition mb-1 md:mb-2 text-xs md:text-sm">
+                        <i class="fas fa-store mr-1"></i><span data-i18n="tabMarketplace">사고팔고</span>
+                    </button>
+                    <button onclick="showSection('travel')" id="tab-travel" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl transition mb-1 md:mb-2 text-xs md:text-sm">
+                        <i class="fas fa-plane mr-1"></i><span data-i18n="tabTravel">여행사</span>
+                    </button>
+                    <button onclick="showSection('festivals')" id="tab-festivals" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-pink-500 to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl transition mb-1 md:mb-2 text-xs md:text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i><span data-i18n="tabFestivals">축제</span>
+                    </button>
+                    <button onclick="showSection('community')" id="tab-community" class="px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold shadow-lg hover:shadow-xl transition mb-1 md:mb-2 text-xs md:text-sm">
+                        <i class="fas fa-hands-helping mr-1"></i><span data-i18n="tabCommunity">우리동네 살리기</span>
+                    </button>
+                </div>
+                
+                <!-- Stats (70% 축소) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-1.5 md:gap-2 max-w-xl mx-auto">
+                    <div class="bg-white rounded-md p-1.5 md:p-2 shadow-sm">
+                        <div class="text-base md:text-lg font-bold text-orange-500" id="stat-restaurants">200+</div>
+                        <div class="text-gray-600 mt-0.5 text-[10px] md:text-xs" data-i18n="statRestaurants">전라도 맛집</div>
+                    </div>
+                    <div class="bg-white rounded-md p-1.5 md:p-2 shadow-sm">
+                        <div class="text-base md:text-lg font-bold text-orange-500" id="stat-festivals">30+</div>
+                        <div class="text-gray-600 mt-0.5 text-[10px] md:text-xs" data-i18n="statFestivals">지역 축제</div>
+                    </div>
+                    <div class="bg-white rounded-md p-1.5 md:p-2 shadow-sm">
+                        <div class="text-base md:text-lg font-bold text-orange-500" id="stat-agencies">32+</div>
+                        <div class="text-gray-600 mt-0.5 text-[10px] md:text-xs" data-i18n="statAgencies">맞춤 여행사</div>
+                    </div>
+                    <div class="bg-white rounded-md p-1.5 md:p-2 shadow-sm">
+                        <div class="text-base md:text-lg font-bold text-orange-500">100+</div>
+                        <div class="text-gray-600 mt-0.5 text-[10px] md:text-xs" data-i18n="statAccommodation">숙박업소</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Restaurants Section -->
+    <section id="restaurants" class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Filter Buttons -->
+            <div class="flex justify-center space-x-2 md:space-x-3 mb-4 md:mb-6 flex-wrap">
+                <button onclick="filterRestaurants('all')" id="btn-all" class="px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold mb-1.5 md:mb-2 shadow-sm hover:shadow-md transition text-xs md:text-sm">
+                    <span data-i18n="filterAll">전체</span>
+                </button>
+                <button onclick="filterRestaurants('jeonnam')" id="btn-jeonnam" class="px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold hover:from-blue-600 hover:to-blue-700 mb-1.5 md:mb-2 shadow-sm hover:shadow-md transition text-xs md:text-sm">
+                    <span data-i18n="filterJeonnam">전라남도</span>
+                </button>
+                <button onclick="filterRestaurants('jeonbuk')" id="btn-jeonbuk" class="px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 mb-1.5 md:mb-2 shadow-sm hover:shadow-md transition text-xs md:text-sm">
+                    <span data-i18n="filterJeonbuk">전라북도</span>
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 loading-pulse">
+                    <i class="fas fa-spinner fa-spin text-white text-2xl"></i>
+                </div>
+                <p class="mt-4 text-gray-600">맛집 정보를 불러오는 중...</p>
+            </div>
+
+            <!-- Restaurants Grid -->
+            <div id="restaurants-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style="display: none;">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Show More Button -->
+            <div class="text-center mt-8" id="show-more-container" style="display: none;">
+                <button onclick="loadMore()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg">
+                    더 보기 <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Agencies Section -->
+    <section id="travel" class="py-16 bg-gray-50" style="display: none;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-plane text-orange-500 mr-2"></i>
+                    맞춤형 소형 여행사 32곳
+                </h3>
+                <p class="text-lg text-gray-600">특별한 경험을 제공하는 전문 여행사를 만나보세요</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex justify-center space-x-2 mb-8 flex-wrap">
+                <button onclick="filterAgencies('all')" id="btn-agency-all" class="px-4 py-2 rounded-full bg-orange-500 text-white font-semibold mb-2 text-sm">
+                    전체
+                </button>
+                <button onclick="filterAgencies('서울')" id="btn-agency-서울" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    서울 (10)
+                </button>
+                <button onclick="filterAgencies('부산')" id="btn-agency-부산" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    부산 (5)
+                </button>
+                <button onclick="filterAgencies('제주')" id="btn-agency-제주" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    제주 (5)
+                </button>
+                <button onclick="filterAgencies('강원')" id="btn-agency-강원" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    강원 (4)
+                </button>
+                <button onclick="filterAgencies('전라')" id="btn-agency-전라" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    전라 (3)
+                </button>
+                <button onclick="filterAgencies('경상')" id="btn-agency-경상" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    경상 (3)
+                </button>
+                <button onclick="filterAgencies('인천')" id="btn-agency-인천" class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100 mb-2 text-sm">
+                    인천 (2)
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="agencies-loading" class="text-center py-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 loading-pulse">
+                    <i class="fas fa-spinner fa-spin text-white text-2xl"></i>
+                </div>
+                <p class="mt-4 text-gray-600">여행사 정보를 불러오는 중...</p>
+            </div>
+
+            <!-- Travel Agencies Grid -->
+            <div id="agencies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style="display: none;">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Show More Button -->
+            <div class="text-center mt-8" id="show-more-agencies-container" style="display: none;">
+                <button onclick="loadMoreAgencies()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition shadow-lg">
+                    더 보기 <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section (사고팔고) -->
+    <section id="marketplace" class="py-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50" style="display: none;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-bold text-indigo-800 mb-3">
+                    <i class="fas fa-store text-purple-600 mr-2"></i>
+                    <span data-i18n="tabMarketplace">사고팔고</span>
+                </h3>
+                <p class="text-base text-purple-700" data-i18n="marketplaceDescription">우리 동네 안심 중고거래 플랫폼</p>
+            </div>
+
+            <!-- 핵심 기능 (50% 축소) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-shield-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-base mb-1 text-white">안심거래</h4>
+                    <p class="text-xs text-blue-100">에스크로 기반 안전결제<br>QR 직거래 인증</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-base mb-1 text-white">동네 인증</h4>
+                    <p class="text-xs text-green-100">GPS 위치 기반<br>반경 500m 실시간 알림</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-4 text-center shadow-md hover:shadow-lg transition">
+                    <div class="bg-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-comments text-purple-600 text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-base mb-1 text-white">1:1 채팅</h4>
+                    <p class="text-xs text-purple-100">빠른 응답 구조<br>거래 후기 점수</p>
+                </div>
+            </div>
+
+            <!-- 안심거래 상세 설명 -->
+            <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+                <h4 class="font-bold text-xl mb-4 text-indigo-800 border-b-2 border-indigo-200 pb-2">
+                    <i class="fas fa-lock text-indigo-600 mr-2"></i>안심거래 (에스크로 기반) 제작 기준
+                </h4>
+                
+                <!-- 핵심 목표 -->
+                <div class="mb-6">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ 핵심 목표</h5>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-gradient-to-r from-red-50 to-pink-50 p-3 rounded-lg border-l-4 border-red-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ 사기 방지</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-lg border-l-4 border-blue-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ 판매자·구매자 모두 보호</p>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border-l-4 border-green-500">
+                            <p class="text-sm font-semibold text-gray-800">✓ QR 기반 오프라인 거래 인증</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 필수 기능 -->
+                <div class="mb-6">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ 필수 기능</h5>
+                    
+                    <!-- ① 결제 중간예치 -->
+                    <div class="bg-blue-50 p-4 rounded-lg mb-4 border-l-4 border-blue-600">
+                        <h6 class="font-bold text-base mb-2 text-blue-800">① 결제 중간예치 (Escrow)</h6>
+                        <p class="text-sm mb-2 text-gray-700"><strong>PG 연동:</strong> 토스페이먼츠 / KG이니시스 / 나이스페이</p>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 구매자가 결제 → 금액은 에스크로에 보관</p>
+                            <p>• 구매확정 시 판매자에게 송금</p>
+                            <p>• 미수령/문제 발생 시 환불 처리</p>
+                        </div>
+                    </div>
+
+                    <!-- ② QR 직접거래 인증 -->
+                    <div class="bg-green-50 p-4 rounded-lg mb-4 border-l-4 border-green-600">
+                        <h6 class="font-bold text-base mb-2 text-green-800">② QR 직접거래 인증</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• QR 생성 (상품 단위)</p>
+                            <p>• 구매자가 QR 스캔 → '직접거래 완료' 인증</p>
+                            <p>• 직거래 현장에서 즉시 확인 가능</p>
+                            <p>• 판매자 단말기 없이도 모바일만으로 구현 가능</p>
+                        </div>
+                    </div>
+
+                    <!-- ③ 위험거래 자동탐지 -->
+                    <div class="bg-red-50 p-4 rounded-lg mb-4 border-l-4 border-red-600">
+                        <h6 class="font-bold text-base mb-2 text-red-800">③ 위험거래 자동탐지</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 이상한 패턴 자동 경고</p>
+                            <p>• 가격이 너무 낮은 경우</p>
+                            <p>• 신규 계정 거래량 급증</p>
+                            <p>• 신고 다수 발생 시 자동 차단</p>
+                        </div>
+                    </div>
+
+                    <!-- ④ 거래후기/별점 -->
+                    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-600">
+                        <h6 class="font-bold text-base mb-2 text-yellow-800">④ 거래후기/별점</h6>
+                        <div class="ml-4 space-y-1 text-sm text-gray-700">
+                            <p>• 거래가 성사된 사용자만 후기 작성 가능</p>
+                            <p>• 거래 48시간 후 자동 알림 → 후기 작성 유도</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UX 기준 -->
+                <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-4 rounded-lg border-2 border-purple-300">
+                    <h5 class="font-bold text-lg mb-3 text-purple-700">▶ UX 기준</h5>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p><strong>• 결제 버튼:</strong> 상품 상세페이지 하단에 고정</p>
+                        <p><strong>• 결제 진행 단계:</strong></p>
+                        <div class="ml-6 bg-white p-3 rounded-lg mt-2 space-y-1">
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">1</span>가격 확인</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">2</span>배송/직거래 선택</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">3</span>결제</p>
+                            <p class="flex items-center"><span class="bg-purple-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">4</span>에스크로 보관 안내</p>
+                        </div>
+                        <p class="mt-2"><strong>• 처리 시간:</strong> 사용자는 3~4단계에서 10초 내 처리 가능해야 함</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 거래 카테고리 (50% 축소) -->
+            <div class="bg-white rounded-xl p-4 shadow-lg">
+                <h4 class="font-bold text-lg mb-4 text-center text-indigo-800">거래 카테고리</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-purple-50 hover:to-purple-100 hover:border-purple-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tv text-purple-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">생활가전</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-blue-50 hover:to-blue-100 hover:border-blue-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-couch text-blue-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">가구·인테리어</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-green-50 hover:to-green-100 hover:border-green-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-paw text-green-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">반려동물용품</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-emerald-50 hover:to-emerald-100 hover:border-emerald-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-seedling text-emerald-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">농산물·직거래</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-orange-50 hover:to-orange-100 hover:border-orange-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tools text-orange-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">공구·DIY</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-pink-50 hover:to-pink-100 hover:border-pink-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-tshirt text-pink-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">의류·잡화</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-yellow-50 hover:to-yellow-100 hover:border-yellow-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-book text-yellow-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">도서·교육</p>
+                    </button>
+                    <button class="p-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg hover:from-indigo-50 hover:to-indigo-100 hover:border-indigo-500 border-2 border-transparent transition cursor-pointer">
+                        <i class="fas fa-ellipsis-h text-indigo-600 text-2xl mb-2"></i>
+                        <p class="text-xs font-semibold text-gray-800">기타</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="text-center mt-6">
+                <button onclick="alert('중고거래 기능은 곧 출시될 예정입니다!\n\n에스크로 기반 안심거래 시스템으로\n안전하고 편리한 거래를 제공합니다.')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 rounded-full font-bold text-base transition shadow-lg hover:shadow-xl">
+                    <i class="fas fa-plus-circle mr-2"></i>물건 등록하기 (준비 중)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-orange py-6 md:py-10">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3" data-i18n="ctaTitle">배달 수수료 0원!</h3>
+            <p class="text-sm md:text-base text-white opacity-90 mb-4 md:mb-6" data-i18n="ctaDescription">사장님 부담 없는 배달, 지금 무료로 입점하세요</p>
+            <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto mb-4 md:mb-6">
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mx-auto mb-1.5 md:mb-2">
+                        <i class="fas fa-won-sign text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-1 text-xs md:text-sm" data-i18n="ctaFee">수수료 0원</h4>
+                    <p class="text-xs opacity-90" data-i18n="ctaFeeDesc">100% 매출 보장</p>
+                </div>
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mx-auto mb-1.5 md:mb-2">
+                        <i class="fas fa-rocket text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-1 text-xs md:text-sm" data-i18n="ctaFast">빠른 심사</h4>
+                    <p class="text-xs opacity-90" data-i18n="ctaFastDesc">2-3일 내 심사 완료</p>
+                </div>
+                <div class="text-center text-white">
+                    <div class="bg-white bg-opacity-20 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center mx-auto mb-1.5 md:mb-2">
+                        <i class="fas fa-headset text-white text-lg md:text-xl"></i>
+                    </div>
+                    <h4 class="font-bold mb-1 text-xs md:text-sm" data-i18n="ctaSupport">전담 지원</h4>
+                    <p class="text-xs opacity-90" data-i18n="ctaSupportDesc">1:1 맞춤 운영</p>
+                </div>
+            </div>
+            <a href="mailto:contact@jt365.me" class="inline-block bg-white text-orange-500 px-5 py-2.5 md:px-6 md:py-3 rounded-full text-sm md:text-base font-bold transition-all shadow-lg hover:shadow-xl">
+                <i class="fas fa-envelope mr-1 md:mr-2"></i>
+                <span data-i18n="ctaButton">가맹점 문의하기</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Auth Modal (로그인/회원가입) -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8 relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <!-- Login Form -->
+            <div id="login-form">
+                <div class="text-center mb-6">
+                    <i class="fas fa-utensils text-orange-500 text-4xl mb-3"></i>
+                    <h3 class="text-2xl font-bold text-gray-800" data-i18n="login">로그인</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="loginDescription">전라도 로컬 미식 슈퍼로드에 오신 것을 환영합니다</p>
+                </div>
+                
+                <form onsubmit="handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="email">이메일</label>
+                        <input type="email" id="login-email" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            placeholder="example@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="password">비밀번호</label>
+                        <input type="password" id="login-password" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition">
+                        <i class="fas fa-sign-in-alt mr-2"></i><span data-i18n="login">로그인</span>
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600 text-sm">
+                        <span data-i18n="noAccount">계정이 없으신가요?</span>
+                        <button onclick="showRegisterModal()" class="text-orange-500 font-semibold hover:underline ml-1" data-i18n="register">회원가입</button>
+                    </p>
+                    <p class="mt-2 text-xs text-gray-500">
+                        <span data-i18n="adminHint">관리자 테스트:</span> admin@jt365.me / admin123
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="register-form" style="display: none;">
+                <div class="text-center mb-6">
+                    <i class="fas fa-user-plus text-orange-500 text-4xl mb-3"></i>
+                    <h3 class="text-2xl font-bold text-gray-800" data-i18n="register">회원가입</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="registerDescription">새로운 계정을 만들어보세요</p>
+                </div>
+                
+                <form onsubmit="handleRegister(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="name">이름</label>
+                        <input type="text" id="register-name" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            placeholder="홍길동">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="email">이메일</label>
+                        <input type="email" id="register-email" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            placeholder="example@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="password">비밀번호</label>
+                        <input type="password" id="register-password" required minlength="6"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            placeholder="6자 이상">
+                    </div>
+                    <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition">
+                        <i class="fas fa-user-plus mr-2"></i><span data-i18n="register">회원가입</span>
+                    </button>
+                </form>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-gray-600 text-sm">
+                        <span data-i18n="hasAccount">이미 계정이 있으신가요?</span>
+                        <button onclick="showLoginModal()" class="text-orange-500 font-semibold hover:underline ml-1" data-i18n="login">로그인</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 md:py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div>
+                    <h4 class="text-sm md:text-base font-bold mb-2 md:mb-3" data-i18n="footerTitle">전라도 미식 슈퍼로드</h4>
+                    <p class="text-gray-400 text-xs md:text-sm" data-i18n="footerDesc">
+                        전라도의 모든 맛과 여행을 한 곳에서 만나보세요
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-2 md:mb-3 text-xs md:text-sm" data-i18n="footerQuickLinks">바로가기</h5>
+                    <ul class="space-y-1 md:space-y-1.5 text-xs md:text-sm">
+                        <li><a href="#restaurants" class="text-gray-400 hover:text-white" data-i18n="footerRestaurants">맛집</a></li>
+                        <li><a href="#festivals" class="text-gray-400 hover:text-white" data-i18n="footerFestivals">축제</a></li>
+                        <li><a href="mailto:contact@jt365.me" class="text-gray-400 hover:text-white" data-i18n="footerContact">가맹점 문의</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-2 md:mb-3 text-xs md:text-sm" data-i18n="footerContactTitle">문의</h5>
+                    <p class="text-xs md:text-sm text-gray-400">
+                        <i class="fas fa-envelope mr-1 md:mr-2"></i>
+                        contact@jt365.me
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-4 md:mt-6 pt-4 md:pt-6 text-center text-xs md:text-sm text-gray-400">
+                <p data-i18n="footerCopyright">&copy; 2024 전라도 미식 슈퍼로드. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Festivals Section (축제) -->
+    <section id="festivals" class="py-6 md:py-10 bg-white" style="display: none;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-6 md:mb-8">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-2 md:mb-3">
+                    <i class="fas fa-calendar-alt text-pink-500 mr-2"></i>
+                    <span data-i18n="festivalTitle">전라도 지역 축제</span>
+                </h3>
+                <p class="text-sm md:text-base text-gray-600" data-i18n="festivalDesc">
+                    전라도 지역의 다채로운 축제와 문화 행사 정보
+                </p>
+            </div>
+
+            <!-- 축제 콘텐츠 -->
+            <div class="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-md">
+                
+                <!-- 주요 전라도 축제 -->
+                <div class="mb-4 md:mb-6">
+                    <h4 class="text-base md:text-lg font-bold text-pink-600 mb-2 md:mb-3 flex items-center">
+                        <i class="fas fa-star mr-1 md:mr-2 text-sm md:text-base"></i>
+                        <span data-i18n="festivalMainTitle">전라도 주요 축제</span>
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                        <!-- 전주국제영화제 -->
+                        <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start justify-between mb-2 flex-wrap gap-1">
+                                <h5 class="text-sm md:text-base font-bold text-gray-800">전주국제영화제 (JIFF)</h5>
+                                <span class="px-2 py-0.5 bg-pink-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatFilm">국제영화제</span>
+                            </div>
+                            <div class="space-y-1 text-xs md:text-sm text-gray-600">
+                                <p><i class="fas fa-map-marker-alt text-pink-500 mr-1 md:mr-2"></i>전라북도 전주시</p>
+                                <p><i class="fas fa-calendar text-pink-500 mr-1 md:mr-2"></i>2024년 5월 1일 ~ 5월 10일</p>
+                                <p class="text-gray-700 mt-1 md:mt-2 text-xs md:text-sm">독립영화와 예술영화를 중심으로 한 국제적인 영화제</p>
+                            </div>
+                        </div>
+
+                        <!-- 정남진장흥물축제 -->
+                        <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start justify-between mb-2 flex-wrap gap-1">
+                                <h5 class="text-sm md:text-base font-bold text-gray-800">정남진장흥물축제</h5>
+                                <span class="px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatWater">물/해양</span>
+                            </div>
+                            <div class="space-y-1 text-xs md:text-sm text-gray-600">
+                                <p><i class="fas fa-map-marker-alt text-pink-500 mr-1 md:mr-2"></i>전라남도 장흥군</p>
+                                <p><i class="fas fa-calendar text-pink-500 mr-1 md:mr-2"></i>2024년 (여름)</p>
+                                <p class="text-gray-700 mt-1 md:mt-2 text-xs md:text-sm">물과 해양을 주제로 한 지역 문화 축제</p>
+                            </div>
+                        </div>
+
+                        <!-- 목포항구축제 -->
+                        <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start justify-between mb-2 flex-wrap gap-1">
+                                <h5 class="text-sm md:text-base font-bold text-gray-800">목포항구축제</h5>
+                                <span class="px-2 py-0.5 bg-cyan-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatPort">항구/해양</span>
+                            </div>
+                            <div class="space-y-1 text-xs md:text-sm text-gray-600">
+                                <p><i class="fas fa-map-marker-alt text-pink-500 mr-1 md:mr-2"></i>전라남도 목포시</p>
+                                <p><i class="fas fa-calendar text-pink-500 mr-1 md:mr-2"></i>2024년</p>
+                                <p class="text-gray-700 mt-1 md:mt-2 text-xs md:text-sm">항구 도시의 특색을 살린 문화관광 축제</p>
+                            </div>
+                        </div>
+
+                        <!-- 밀양아리랑대축제 -->
+                        <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex items-start justify-between mb-2 flex-wrap gap-1">
+                                <h5 class="text-sm md:text-base font-bold text-gray-800">밀양아리랑대축제</h5>
+                                <span class="px-2 py-0.5 bg-purple-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatMusic">전통음악</span>
+                            </div>
+                            <div class="space-y-1 text-xs md:text-sm text-gray-600">
+                                <p><i class="fas fa-map-marker-alt text-pink-500 mr-1 md:mr-2"></i>경남 밀양시</p>
+                                <p><i class="fas fa-calendar text-pink-500 mr-1 md:mr-2"></i>2024년</p>
+                                <p class="text-gray-700 mt-1 md:mt-2 text-xs md:text-sm">전통 아리랑 음악을 중심으로 한 문화 축제</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 전국 주요 축제 -->
+                <div class="mb-4 md:mb-6">
+                    <h4 class="text-base md:text-lg font-bold text-purple-600 mb-2 md:mb-3 flex items-center">
+                        <i class="fas fa-globe-asia mr-1 md:mr-2 text-sm md:text-base"></i>
+                        <span data-i18n="festivalNationalTitle">전국 주요 축제 (문화관광축제 선정)</span>
+                    </h4>
+                    
+                    <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                            <div class="border-l-4 border-pink-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">화성 뱃놀이축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">경기도 화성시 | 5월 31일~6월 2일</p>
+                                <span class="inline-block mt-2 text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded" data-i18n="festCatCulture">문화체험</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">대구치맥페스티벌</h6>
+                                <p class="text-xs md:text-sm text-gray-600">대구광역시 | 2024년 여름</p>
+                                <span class="inline-block mt-2 text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded" data-i18n="festCatFood">음식축제</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">부평풍물대축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">인천 부평구 | 2024년</p>
+                                <span class="inline-block mt-2 text-xs bg-green-100 text-green-700 px-2 py-1 rounded" data-i18n="festCatFolk">전통민속</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-orange-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">수원화성문화제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">경기도 수원시 | 2024년</p>
+                                <span class="inline-block mt-2 text-xs bg-orange-100 text-orange-700 px-2 py-1 rounded" data-i18n="festCatHistory">역사문화</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-cyan-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">정선아리랑제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">강원도 정선군 | 2024년</p>
+                                <span class="inline-block mt-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-1 rounded" data-i18n="festCatMusic">전통음악</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-indigo-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">평창송어축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">강원도 평창군 | 2024년 겨울</p>
+                                <span class="inline-block mt-2 text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded" data-i18n="festCatWinter">겨울체험</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">울산옹기축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">울산광역시 | 2024년</p>
+                                <span class="inline-block mt-2 text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded" data-i18n="festCatCraft">공예/전통</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">음성품바축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">충북 음성군 | 2024년</p>
+                                <span class="inline-block mt-2 text-xs bg-red-100 text-red-700 px-2 py-1 rounded" data-i18n="festCatPerform">전통공연</span>
+                            </div>
+                            
+                            <div class="border-l-4 border-pink-500 pl-4">
+                                <h6 class="font-bold text-gray-800 mb-1 text-sm md:text-base">인천 펜타포트 음악축제</h6>
+                                <p class="text-xs md:text-sm text-gray-600">인천광역시 | 2024년 여름</p>
+                                <span class="inline-block mt-2 text-xs bg-pink-100 text-pink-700 px-2 py-1 rounded" data-i18n="festCatMusicFest">음악축제</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 서울/수도권 축제 -->
+                <div class="mb-4 md:mb-6">
+                    <h4 class="text-base md:text-lg font-bold text-orange-600 mb-2 md:mb-3 flex items-center">
+                        <i class="fas fa-city mr-1 md:mr-2 text-sm md:text-base"></i>
+                        <span data-i18n="festivalSeoulTitle">서울·수도권 축제</span>
+                    </h4>
+                    
+                    <div class="space-y-2 md:space-y-3">
+                        <div class="bg-white rounded-lg p-3 md:p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h6 class="font-bold text-gray-800 text-sm md:text-base">부산국제영화제 (BIFF)</h6>
+                                    <p class="text-xs md:text-sm text-gray-600">부산광역시 | 2024년 10월 2일 ~ 10월 11일</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-red-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatFilm">국제영화제</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h6 class="font-bold text-gray-800 text-sm md:text-base">서울세계불꽃축제</h6>
+                                    <p class="text-xs md:text-sm text-gray-600">서울특별시 | 2024년 가을</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-orange-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatFireworks">불꽃/공연</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h6 class="font-bold text-gray-800 text-sm md:text-base">광명음식영화축제 (광명, 씨네맛)</h6>
+                                    <p class="text-xs md:text-sm text-gray-600">경기도 광명시 | 2024년 6월 1일 ~ 6월 2일</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-green-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatFilmFood">영화+맛집</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h6 class="font-bold text-gray-800 text-sm md:text-base">궁중문화축전</h6>
+                                    <p class="text-xs md:text-sm text-gray-600">서울특별시 | 2024년 4월 27일 ~ 5월 5일</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-purple-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatHeritage">문화유산</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h6 class="font-bold text-gray-800 text-sm md:text-base">계촌클래식축제 (제10회)</h6>
+                                    <p class="text-xs md:text-sm text-gray-600">강원도 평창군 | 2024년 5월 31일 ~ 6월 2일</p>
+                                </div>
+                                <span class="px-2 py-0.5 bg-blue-500 text-white text-xs rounded-full whitespace-nowrap" data-i18n="festCatClassical">클래식음악</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기타 지역 축제 -->
+                <div>
+                    <h4 class="text-base md:text-lg font-bold text-blue-600 mb-2 md:mb-3 flex items-center">
+                        <i class="fas fa-map-marked-alt mr-1 md:mr-2 text-sm md:text-base"></i>
+                        <span data-i18n="festivalOtherTitle">기타 지역 축제</span>
+                    </h4>
+                    
+                    <div class="bg-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm">
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 text-xs md:text-sm text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>보령머드축제</strong> - 충남 보령시 (수산물, 해산물 축제 포함)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>공주 석장리 구석기축제</strong> - 충남 공주시</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>공주 백제문화제</strong> - 충남 공주시</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>김포 아라마린 페스티벌</strong> - 경기도 김포시 (6월 1~2일)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>수원 문화유산 야행</strong> - 경기도 수원시 (5월 31일~6월 1일)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>무등산 인문축제</strong> - 광주광역시 동구 (6월 1~2일)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>창덕궁 달빛기행</strong> - 서울 종로구 (4월 11일~6월 2일)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-pink-500 mr-2 mt-1"></i>
+                                <span><strong>2024 한강 불빛 공연</strong> - 서울 송파구 (드론 라이트쇼)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 안내 문구 -->
+                <div class="mt-3 md:mt-4 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg p-2 md:p-3 border-l-4 border-pink-500">
+                    <p class="text-xs md:text-sm text-gray-700">
+                        <i class="fas fa-info-circle text-pink-600 mr-1 md:mr-2"></i>
+                        <span data-i18n="festivalNotice">축제 정보는 2024년 기준입니다. 최신 일정과 참가 방법은 각 지자체 및 축제 공식 홈페이지를 확인해주세요.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section (우리동네 살리기) -->
+    <section id="community" class="py-16 bg-white" style="display: none;">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-hands-helping text-orange-500 mr-2"></i>
+                    <span data-i18n="tabCommunity">우리동네 살리기</span>
+                </h3>
+                <p class="text-lg text-gray-600">지역 커뮤니티 활성화를 위한 다양한 서비스</p>
+            </div>
+
+            <!-- Community Tabs -->
+            <div class="flex justify-center space-x-4 mb-8">
+                <button onclick="showCommunityTab('benefits')" id="community-tab-benefits" class="px-6 py-3 rounded-full bg-orange-500 text-white font-semibold">
+                    <i class="fas fa-gift mr-2"></i><span data-i18n="communityBenefits">우리동네 혜택</span>
+                </button>
+                <button onclick="showCommunityTab('marketplace')" id="community-tab-marketplace" class="px-6 py-3 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-orange-100">
+                    <i class="fas fa-store mr-2"></i><span data-i18n="communityMarket">사고팔고</span>
+                </button>
+            </div>
+
+            <!-- Benefits Content -->
+            <div id="community-benefits" class="community-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 mb-8">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-4" data-i18n="benefitsTitle">우리동네 혜택</h4>
+                        <p class="text-gray-700 mb-6" data-i18n="benefitsDescription">전국 지방자치단체 지원정책 안내</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 빈집 임대·리모델링 정책 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-home text-white text-xl"></i>
+                                    </div>
+                                    <h5 class="text-lg font-bold ml-3">빈집 임대·리모델링</h5>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">농촌 빈집을 리모델링하여 5~7년 무상 임대 또는 최대 3,000만원 지원</p>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✓ 귀농·귀촌인 대상 장기 임대</li>
+                                    <li>✓ 세금 감면 (재산세·취득세)</li>
+                                    <li>✓ 빈집은행 매물 정보 제공</li>
+                                </ul>
+                            </div>
+
+                            <!-- 청년·로컬크리에이터 지원 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-lightbulb text-white text-xl"></i>
+                                    </div>
+                                    <h5 class="text-lg font-bold ml-3">로컬크리에이터 지원</h5>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">지역 기반 창업자에게 사업화 자금 최대 3~4천만원 지원</p>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✓ 교육·멘토링·브랜딩 지원</li>
+                                    <li>✓ 후속 정책자금 융자 연계</li>
+                                    <li>✓ 청년상가·공유오피스 제공</li>
+                                </ul>
+                            </div>
+
+                            <!-- 워케이션·생활인구 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-briefcase text-white text-xl"></i>
+                                    </div>
+                                    <h5 class="text-lg font-bold ml-3">워케이션 활성화</h5>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">장기 체류형 관광 상품 및 생활인구 확대 사업</p>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✓ 수도권 기업 워케이션 유치</li>
+                                    <li>✓ 교통·숙박 할인 혜택</li>
+                                    <li>✓ 마을호텔·체험형 숙소</li>
+                                </ul>
+                            </div>
+
+                            <!-- 지방소멸대응기금 -->
+                            <div class="bg-white rounded-xl p-6 shadow-lg">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-orange-500 w-12 h-12 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-coins text-white text-xl"></i>
+                                    </div>
+                                    <h5 class="text-lg font-bold ml-3">지방소멸대응기금</h5>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-4">인구감소지역에 연 1조원 규모 기금 투입</p>
+                                <ul class="space-y-2 text-sm text-gray-700">
+                                    <li>✓ 일자리·정주여건 개선</li>
+                                    <li>✓ 청년유입 프로젝트</li>
+                                    <li>✓ 지역혁신 공모사업</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <a href="https://www.mois.go.kr" target="_blank" class="inline-block bg-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+                                <i class="fas fa-external-link-alt mr-2"></i>행정안전부 자세히 보기
+                            </a>
+                        </div>
+
+                        <!-- 상세 정책 안내 (파일 내용) -->
+                        <div class="mt-12 bg-white rounded-2xl p-8 shadow-xl">
+                            <div class="mb-6 pb-4 border-b">
+                                <h4 class="text-2xl font-bold text-gray-800 mb-2">
+                                    <i class="fas fa-book-open text-orange-500 mr-2"></i>
+                                    지방살리기 주요 정책 상세 안내
+                                </h4>
+                                <p class="text-gray-600">빈집 임대·리모델링 정책을 중심으로 한 지방소멸 대응 정책</p>
+                            </div>
+
+                            <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
+                                <div class="bg-blue-50 p-6 rounded-xl">
+                                    <p class="text-sm leading-relaxed">
+                                        거의 모든 지자체가 "지방소멸 대응 계획"을 하나씩 들고 있어서, 큰 틀(국가 정책) + 분야별(지자체 개별사업)로 나눠서 보는 게 이해하기 좋습니다.
+                                        질문하신 빈집 임대·리모델링 정책을 중심으로, 지방살리기 주요 정책들을 정리해볼게요.
+                                    </p>
+                                </div>
+
+                                <!-- 1. 큰 틀 -->
+                                <div>
+                                    <h5 class="text-xl font-bold text-orange-600 mb-4">1. 큰 틀: 인구감소지역·지방소멸 대응 국가 프레임</h5>
+                                    
+                                    <div class="ml-4 space-y-4">
+                                        <div>
+                                            <h6 class="font-bold text-lg mb-2">📌 인구감소지역 지원 특별법 ('23.1 시행)</h6>
+                                            <p class="text-sm mb-2">인구가 줄어드는 지역(인구감소지역)이 스스로 인구활력 계획을 만들고, 국가는 행·재정적으로 지원하는 법적 기반입니다.</p>
+                                            <p class="text-sm text-gray-600">• 행안부가 전국에서 인구감소지역 89개 시·군·구를 지정해 관리합니다.</p>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-bold text-lg mb-2">💰 지방소멸대응기금 (연 1조원, 10년 지원)</h6>
+                                            <p class="text-sm">인구감소지역에 매년 1조원 규모의 기금을 투입해서 일자리·정주여건·청년유입 등 프로젝트를 지자체가 기획·집행합니다.</p>
+                                        </div>
+
+                                        <div>
+                                            <h6 class="font-bold text-lg mb-2">📋 제1차 인구감소지역 대응 기본계획 ('23~'27)</h6>
+                                            <p class="text-sm mb-2">16개 부처 합동 범정부 종합계획으로, 방향은 크게 3가지입니다:</p>
+                                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                                <li>지역 맞춤형 일자리·산업 진흥</li>
+                                                <li>매력적인 정주 여건(주거·의료·교육 등) 조성</li>
+                                                <li>생활인구(관광·워케이션 등) 유입·활성화</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2. 빈집 정책 -->
+                                <div>
+                                    <h5 class="text-xl font-bold text-orange-600 mb-4">2. 빈집·임대·리모델링 정책 (핵심)</h5>
+                                    
+                                    <div class="ml-4 space-y-4">
+                                        <h6 class="font-bold text-lg mb-3">2-1. 중앙정부 공통 정책</h6>
+
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <h6 class="font-bold mb-2">🏠 범정부 빈집정비 종합계획 (2025 발표)</h6>
+                                            <p class="text-sm mb-2">방치된 빈집 13만 채 이상을 지역 자원으로 보고 활용:</p>
+                                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                                <li>세금 감면(재산세·취득세)</li>
+                                                <li>용도 변경 완화</li>
+                                                <li>빈집 정보 통합 시스템</li>
+                                                <li>지자체 역량 강화·민간 참여 확대</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <h6 class="font-bold mb-2">💻 '빈집애(愛) 누리집' + 빈집정보 시스템</h6>
+                                            <p class="text-sm mb-2">2025년부터 전국 빈집 현황, 실태조사, 인구감소지역 정보를 통합해서 보여주는 온라인 시스템을 구축 중입니다.</p>
+                                            <p class="text-sm">향후에는 빈집 소유자가 "매매/임대 의사"를 표시하면 수요자는 누리집에서 빈집 매물 목록을 검색하는 "빈집 거래지원 서비스"(일종의 전국 빈집 은행)까지 포함할 계획입니다.</p>
+                                        </div>
+
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <h6 class="font-bold mb-2">🌾 농촌 빈집은행·마을호텔·워케이션</h6>
+                                            <p class="text-sm">농식품부는 농촌 지역에 "농촌 빈집은행"을 만들고, 빈집 매매·임대 정보를 모으고, 민간과 함께 마을호텔, 워케이션 숙소 등으로 리모델링하는 프로젝트를 추진하고 있습니다.</p>
+                                        </div>
+
+                                        <h6 class="font-bold text-lg mb-3 mt-6">2-2. 지자체별 빈집 활용·임대 유형</h6>
+
+                                        <div class="space-y-3">
+                                            <div class="border-l-4 border-orange-500 pl-4">
+                                                <h6 class="font-bold mb-2">① 농촌 빈집 리모델링 → 공공임대주택 (귀농·귀촌용)</h6>
+                                                <p class="text-sm mb-2"><strong>전남 강진군</strong> – "지방소멸 위기극복 빈집 리모델링 지원사업"</p>
+                                                <ul class="list-disc ml-6 text-sm space-y-1">
+                                                    <li>농촌에 방치된 빈집을 군이 리모델링해서 5년 또는 7년 동안 무상 임대</li>
+                                                    <li>빈집을 고쳐 입주하는 경우 최대 3,000만원까지 지원</li>
+                                                    <li>대상: 예비 귀농·귀촌인, 청년, 지역 일자리 종사자 등</li>
+                                                </ul>
+                                                <p class="text-sm mt-2 text-gray-600">• 경남 합천군 – "나눔주택" 모델, 전남 해남군 – 민관협력 농촌빈집 재생 프로젝트 등</p>
+                                            </div>
+
+                                            <div class="border-l-4 border-blue-500 pl-4">
+                                                <h6 class="font-bold mb-2">② 귀농인의 집·체험형 주택</h6>
+                                                <p class="text-sm mb-2"><strong>전북 진안군</strong> – "귀농인의 집", "희망하우스 빈집재생사업"</p>
+                                                <p class="text-sm mb-2">귀농·귀촌 희망자가 1~2년 정도 살아보는 체험형 주택을 제공해 정착 여부를 결정하게 하는 모델입니다.</p>
+                                                <p class="text-sm text-gray-600">• 충북 보은·증평·진천 등도 빈집 개량 지원 + 귀농인의 집 조성으로 저렴한 보증금·임대료로 농촌 생활을 미리 경험하게 하는 사업을 운영합니다.</p>
+                                            </div>
+
+                                            <div class="border-l-4 border-green-500 pl-4">
+                                                <h6 class="font-bold mb-2">③ 도시·읍내 빈집 → 청년·문화·커뮤니티 공간</h6>
+                                                <p class="text-sm mb-2"><strong>경북 경산시</strong> – "서상동 청년문화마을 도시재생 뉴딜사업"</p>
+                                                <p class="text-sm mb-2">노후·빈집 밀집지역을 청년·문화 거점으로 재생하는 사업.</p>
+                                                <p class="text-sm mb-2"><strong>부산 사상구·영도구</strong> 등:</p>
+                                                <ul class="list-disc ml-6 text-sm space-y-1">
+                                                    <li>사상구: 빈집을 치유 텃밭으로 만들어 주민 공동체 공간 조성</li>
+                                                    <li>영도구: "빈집 없는 봉산마을 프로젝트"로 빈집을 공원, 커뮤니티 시설 등으로 전환</li>
+                                                </ul>
+                                                <p class="text-sm mt-2 text-gray-600">이런 도시재생형 사업은 보통 청년임대주택 + 공유 작업공간 + 문화공간을 패키지로 묶어 청년·예술가·로컬크리에이터를 유입시키는 방향으로 설계됩니다.</p>
+                                            </div>
+
+                                            <div class="border-l-4 border-purple-500 pl-4">
+                                                <h6 class="font-bold mb-2">④ 빈집 → 마을호텔·워케이션·관광용</h6>
+                                                <p class="text-sm mb-2">농식품부·지자체·민간이 함께 농촌빈집을 마을호텔, 체험형 숙소, 워케이션 공간으로 리모델링하는 빈집 재생 프로젝트를 추진 중입니다.</p>
+                                                <p class="text-sm text-gray-600">강원도처럼 지방소멸대응기금 + 워케이션 활성화 사업을 묶어서 수도권 기업 대상 워케이션 상품을 만들어 체류형 관광·생활인구 확대에 쓰는 곳도 있습니다.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="bg-yellow-50 p-4 rounded-lg mt-4">
+                                            <h6 class="font-bold mb-2">2-3. 지자체 빈집·임대 정책에서 자주 나오는 공통 요소</h6>
+                                            <div class="space-y-2 text-sm">
+                                                <p><strong>• 임대 조건:</strong> 무상 임대 (5~7년) 또는 보증금·월세를 주변 시세의 30~50% 수준으로 낮춰서 공급</p>
+                                                <p><strong>• 리모델링·수리비 지원:</strong> 지자체가 직접 수리하거나, 소유자/입주자에게 수백만~수천만원 리모델링비 지원</p>
+                                                <p><strong>• 세제 인센티브:</strong> 빈집 철거 또는 정비 시 재산세·취득세 감면 등</p>
+                                                <p><strong>• 입주자 요건:</strong> 예비 귀농·귀촌인, 만 39세 이하 청년·신혼부부, 지역 특화산업(농업·수산·관광 등)에 종사하는 사람</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3. 청년·창업 정책 -->
+                                <div>
+                                    <h5 class="text-xl font-bold text-orange-600 mb-4">3. 청년·창업·로컬크리에이터 중심 지방살리기 정책</h5>
+                                    
+                                    <div class="ml-4 space-y-4">
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <h6 class="font-bold mb-2">🚀 로컬크리에이터(지역기반 창업자) 지원</h6>
+                                            <p class="text-sm mb-2"><strong>중소벤처기업부 + 지자체 "로컬크리에이터 지원사업"</strong></p>
+                                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                                <li>지역 고유의 자원(음식, 관광, 콘텐츠 등)을 활용해 사업하는 로컬크리에이터에게</li>
+                                                <li>사업화 자금 최대 3~4천만원</li>
+                                                <li>교육·멘토링·브랜딩·마케팅</li>
+                                                <li>후속 정책자금(융자) 연계를 지원</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="bg-gray-50 p-4 rounded-lg">
+                                            <h6 class="font-bold mb-2">💼 지방소멸대응기금 + 중기부 공모사업</h6>
+                                            <p class="text-sm">행안부·중기부가 함께 하는 "지역혁신 공모사업"에서는 지자체가 지방소멸대응기금으로 청년상가, 공유오피스, 스마트팜 등 인프라를 만들면, 중기부가 그 공간을 쓰는 지역 중소기업·청년창업자 사업화·인력양성 등을 추가 지원하는 방식입니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. 생활인구·관광 -->
+                                <div>
+                                    <h5 class="text-xl font-bold text-orange-600 mb-4">4. 생활인구·관광·워케이션·문화 정책</h5>
+                                    
+                                    <div class="ml-4 space-y-4">
+                                        <div class="bg-blue-50 p-4 rounded-lg">
+                                            <p class="text-sm mb-2">요즘 키워드는 "주민등록 인구"만이 아니라, <strong>"생활인구"</strong>입니다.</p>
+                                            <ul class="list-disc ml-6 text-sm space-y-1">
+                                                <li><strong>생활인구 개념:</strong> 그 지역에 체류하면서 소비·활동을 하는 사람까지 인구로 보는 개념</li>
+                                                <li><strong>워케이션 사업:</strong> 수도권 기업 대상 워케이션 설명회, 장기 체류형 관광상품</li>
+                                                <li><strong>지역 축제·관광·문화:</strong> 로컬 축제, 체류형 관광, 장기 체류객 혜택(교통·숙박 할인)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 5. 실무 팁 -->
+                                <div>
+                                    <h5 class="text-xl font-bold text-orange-600 mb-4">5. "전국 지자체 정책"을 실제로 조사할 때 보는 순서 (실무용 팁)</h5>
+                                    
+                                    <div class="ml-4 bg-green-50 p-4 rounded-lg">
+                                        <ol class="list-decimal ml-6 text-sm space-y-2">
+                                            <li><strong>관심 지역이 인구감소지역인지 먼저 확인</strong> - 행안부 인구감소지역 지정 현황 페이지에서 89개 시·군·구 목록 확인</li>
+                                            <li><strong>해당 지자체의 "인구감소지역 대응 기본계획/시행계획" 열람</strong> - 강화군·봉화군 등은 계획 PDF로 상세한 사업 리스트와 예산이 공개</li>
+                                            <li><strong>빈집·주거 정책 검색 키워드:</strong> 빈집 리모델링, 빈집정비, 빈집 임대, 귀농인의 집, 도시재생, 농촌 빈집은행</li>
+                                            <li><strong>청년·창업·로컬 사업:</strong> 청년 정착 지원, 청년 로컬크리에이터, 로컬크리에이터 육성, 청년상가, 지역혁신 공모</li>
+                                            <li><strong>전국 공통 트렌드:</strong> 행안부, 국토부, 농식품부, 중기부의 보도자료/종합계획/우수사례집 참고</li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 text-center bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-xl">
+                                    <p class="text-lg font-bold mb-2">💡 지방살리기 정책 활용 안내</p>
+                                    <p class="text-sm opacity-90">사업기획서·제안서 작성 시, 또는 특정 지역을 타겟으로 서비스 만드실 때 위 순서로 찾으면 정리가 잘 됩니다!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marketplace Content -->
+            <div id="community-marketplace" class="community-content" style="display: none;">
+                <div class="max-w-6xl mx-auto">
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-8 mb-8">
+                        <div class="text-center mb-8">
+                            <h4 class="text-2xl font-bold text-gray-800 mb-4" data-i18n="marketplaceTitle">사고팔고</h4>
+                            <p class="text-gray-700 mb-6" data-i18n="marketplaceDescription">우리 동네 중고거래 플랫폼</p>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                            <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+                                <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-shield-alt text-white text-2xl"></i>
+                                </div>
+                                <h5 class="font-bold text-lg mb-2">안심거래</h5>
+                                <p class="text-sm text-gray-600">에스크로 기반 안전결제<br>QR 직거래 인증</p>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+                                <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                                </div>
+                                <h5 class="font-bold text-lg mb-2">동네 인증</h5>
+                                <p class="text-sm text-gray-600">GPS 위치 기반<br>반경 500m 실시간 알림</p>
+                            </div>
+
+                            <div class="bg-white rounded-xl p-6 text-center shadow-lg">
+                                <div class="bg-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-comments text-white text-2xl"></i>
+                                </div>
+                                <h5 class="font-bold text-lg mb-2">1:1 채팅</h5>
+                                <p class="text-sm text-gray-600">빠른 응답 구조<br>거래 후기 점수</p>
+                            </div>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h5 class="font-bold text-lg mb-4 text-center">거래 카테고리</h5>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-tv text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">생활가전</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-couch text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">가구·인테리어</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-paw text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">반려동물용품</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-seedling text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">농산물·직거래</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-tools text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">공구·DIY</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-tshirt text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">의류·잡화</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-book text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">도서·교육</p>
+                                </div>
+                                <div class="text-center p-4 bg-gray-50 rounded-lg hover:bg-orange-50 transition cursor-pointer">
+                                    <i class="fas fa-ellipsis-h text-orange-500 text-2xl mb-2"></i>
+                                    <p class="text-sm font-semibold">기타</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <button onclick="alert('중고거래 기능은 곧 출시될 예정입니다!')" class="bg-orange-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-orange-600 transition shadow-lg">
+                                <i class="fas fa-plus-circle mr-2"></i>물품 등록하기 (준비 중)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="fixed bottom-6 right-6 z-50">
+        <!-- Chatbot Button -->
+        <div id="chatbot-button" class="relative cursor-pointer">
+            <!-- Speech Bubble -->
+            <div id="chatbot-bubble" class="absolute bottom-full right-0 mb-3 bg-white rounded-2xl p-2 shadow-lg border-2 border-indigo-300 w-[120px] md:w-[140px] transition-opacity duration-300">
+                <div class="text-center text-[10px] md:text-xs leading-snug text-gray-700 font-medium" id="chatbot-bubble-text" style="line-height: 1.3;">
+                    궁금하신<br>질문은<br>자동응답봇에<br>문의하세요
+                </div>
+                <div class="absolute -bottom-2 right-8 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-indigo-300"></div>
+                <div class="absolute -bottom-1.5 right-8 w-0 h-0 border-l-7 border-l-transparent border-r-7 border-r-transparent border-t-7 border-t-white"></div>
+                <!-- AI Badge -->
+                <div class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-md">AI</div>
+            </div>
+            
+            <!-- Purple Circle Button -->
+            <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                    <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Chatbot Window -->
+        <div id="chatbot-window" class="hidden fixed bottom-6 right-6 w-[90vw] max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-indigo-200">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-3 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                        <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">JT365 챗봇</div>
+                        <div class="text-xs opacity-90">무엇을 도와드릴까요?</div>
+                    </div>
+                </div>
+                <button id="chatbot-close-btn" class="text-white hover:bg-white hover:bg-opacity-20 rounded-lg p-1.5 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="bg-gradient-to-b from-indigo-50 to-white p-3">
+                <div class="flex items-center space-x-2 mb-2">
+                    <span class="text-lg">💡</span>
+                    <h3 class="font-bold text-sm text-gray-800">자주 묻는 질문</h3>
+                </div>
+            </div>
+            
+            <!-- Question List -->
+            <div id="chatbot-questions" class="h-[400px] overflow-y-auto p-3 space-y-2 bg-white border-t-2 border-indigo-100">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            
+            <!-- Input (hidden by default, shown when needed) -->
+            <div class="p-3 bg-gray-50 border-t border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <input 
+                        type="text" 
+                        id="chatbot-input" 
+                        class="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-400 text-sm bg-white" 
+                        placeholder="질문을 입력하세요..."
+                    >
+                    <button id="chatbot-send-btn" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-2 rounded-full hover:shadow-lg transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="./i18n.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./app.js"></script>
+    <script src="./chatbot.js"></script>
+</body>
+</html>
