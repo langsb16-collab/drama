@@ -67,43 +67,27 @@
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header - 모바일 완전 재설계 -->
-    <header class="gradient-orange text-white py-4 sticky top-0 z-40 shadow-lg">
-        <div class="container mx-auto px-3">
-            <!-- 첫 번째 줄: 로고 -->
-            <div class="flex items-center justify-center mb-2">
-                <i class="fas fa-utensils text-xl mr-2"></i>
-                <div class="leading-tight text-center">
-                    <div class="text-sm font-bold" data-i18n="siteTitle">전라도 미식</div>
-                    <div class="text-sm font-bold" data-i18n="siteTitleLine2">슈퍼로드</div>
+    <!-- Header - 스크린샷 레이아웃 (회색 배경) -->
+    <header class="bg-gray-300 text-blue-600 py-4 sticky top-0 z-40 shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- 첫 번째 줄: 로고(왼쪽) + 로그인/회원가입(오른쪽) -->
+            <div class="flex items-center justify-between mb-3">
+                <!-- 로고 -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-utensils text-2xl"></i>
+                    <div class="leading-tight">
+                        <div class="text-lg font-bold" data-i18n="siteTitle">전라도 미식</div>
+                        <div class="text-lg font-bold" data-i18n="siteTitleLine2">슈퍼로드</div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- 두 번째 줄: 언어 전환 버튼 (텍스트만, 이모지 제거) -->
-            <div class="flex justify-center items-center gap-1 mb-2">
-                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-2.5 py-1 rounded bg-orange-700 text-white text-xs font-bold shadow border border-yellow-400">
-                    한국어
-                </button>
-                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-2.5 py-1 rounded bg-blue-700 text-white text-xs font-bold shadow border border-blue-400 opacity-60">
-                    English
-                </button>
-                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-2.5 py-1 rounded bg-red-700 text-white text-xs font-bold shadow border border-red-400 opacity-60">
-                    中文
-                </button>
-                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-2.5 py-1 rounded bg-purple-700 text-white text-xs font-bold shadow border border-purple-400 opacity-60">
-                    日本語
-                </button>
-            </div>
-            
-            <!-- 세 번째 줄: 로그인/회원가입 -->
-            <div class="flex justify-center items-center gap-1">
-                <!-- Auth Buttons (로그인 전) -->
-                <div id="auth-buttons" class="flex items-center gap-1">
-                    <button onclick="showLoginModal()" class="px-2 py-0.5 bg-white bg-opacity-20 hover:bg-opacity-30 text-white text-[10px] rounded transition">
-                        <i class="fas fa-sign-in-alt text-[9px] mr-0.5"></i><span data-i18n="login">로그인</span>
+                
+                <!-- Auth Buttons (로그인 전) - 오른쪽 상단 -->
+                <div id="auth-buttons" class="flex flex-col items-end gap-1">
+                    <button onclick="showLoginModal()" class="px-3 py-1 bg-white text-blue-600 hover:bg-blue-50 text-sm font-bold rounded shadow-md transition border-2 border-blue-600">
+                        <span data-i18n="login">로그인</span>
                     </button>
-                    <button onclick="showRegisterModal()" class="px-2 py-0.5 bg-white text-orange-500 hover:bg-gray-100 text-[10px] font-semibold rounded transition">
-                        <i class="fas fa-user-plus text-[9px] mr-0.5"></i><span data-i18n="register">회원가입</span>
+                    <button onclick="showRegisterModal()" class="px-3 py-1 bg-white text-blue-600 hover:bg-blue-50 text-sm font-bold rounded shadow-md transition border-2 border-blue-600">
+                        <span data-i18n="register">회원가입</span>
                     </button>
                 </div>
                 
@@ -111,6 +95,22 @@
                 <div id="user-info" class="hidden">
                     <!-- JavaScript로 동적 생성 -->
                 </div>
+            </div>
+            
+            <!-- 두 번째 줄: 언어 전환 버튼 (중앙, 항상 표시) -->
+            <div class="flex justify-center items-center gap-2">
+                <button onclick="changeLanguage('ko')" data-lang="ko" class="lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-600">
+                    한국어
+                </button>
+                <button onclick="changeLanguage('en')" data-lang="en" class="lang-btn px-4 py-1.5 rounded bg-white text-blue-600 text-sm font-bold shadow-md border-2 border-blue-400 opacity-60">
+                    English
+                </button>
+                <button onclick="changeLanguage('zh')" data-lang="zh" class="lang-btn px-4 py-1.5 rounded bg-white text-red-600 text-sm font-bold shadow-md border-2 border-red-400 opacity-60">
+                    中文
+                </button>
+                <button onclick="changeLanguage('ja')" data-lang="ja" class="lang-btn px-4 py-1.5 rounded bg-white text-purple-600 text-sm font-bold shadow-md border-2 border-purple-400 opacity-60">
+                    日本語
+                </button>
             </div>
         </div>
     </header>
